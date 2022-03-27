@@ -1,15 +1,20 @@
-## Título
-### Subtítulo
-Este es un ejemplo de texto que da entrada a una lista genérica de elementos:
-- Elemento 1
-- Elemento 2
-- Elemento 3
-Este es un ejemplo de texto que da entrada a una lista numerada:
-1. Elemento 1
-2. Elemento 2
-3. Elemento 3
-Al texto en Markdown puedes añadirle formato como **negrita** o *cursiva* de una manera muy sencilla.
- 
+### Gestores de base de datos
+- MySQL
+- Mariadb
 
-##Links de recursos
+### Lenguajes de desarrollo
+1. HTML5
+2. PHP
+3. JAVASCRIPT
+4. CSS
+
+### IDE DE DESARROLLO
+ - Visual Studio Code
+
+### Temas delicados:
+ - Subir archivos a una base de datos
+ - Mostrar archivos de la base de datos
+ - Descargar archivos de la base de datos
+
+## Links de recursos
  - https://www.phpcentral.com/pregunta/898/como-guardar-un-documento-pdf-o-doc-en-mi-base-de-datos-mysql
