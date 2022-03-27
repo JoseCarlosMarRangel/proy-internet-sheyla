@@ -12,4 +12,4 @@ Al texto en Markdown puedes añadirle formato como **negrita** o *cursiva* de un
  
 
 ##Links de recursos
- https://www.phpcentral.com/pregunta/898/como-guardar-un-documento-pdf-o-doc-en-mi-base-de-datos-mysql
+ - https://www.phpcentral.com/pregunta/898/como-guardar-un-documento-pdf-o-doc-en-mi-base-de-datos-mysql
