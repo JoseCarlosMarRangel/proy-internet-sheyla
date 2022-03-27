@@ -1,8 +1,8 @@
 #Base de datos
 
-#Gestores
-  -MySql
-  -MariaDB
+**Gestores
+-MySql
+-MariaDB
 
 ---Lenguajes de programación---
  -html
