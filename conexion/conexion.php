@@ -18,7 +18,7 @@ if (!$conexion) {
 function valida_usuario_bd($usuario, $contrasena, $conexion)
 {
     $query = "SELECT * FROM empleados WHERE Usuario = '$usuario' AND Password = '$contrasena'";
-    echo $query;
+    //echo $query;
     $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
     $filas = mysqli_num_rows($resultado);
     if (mysqli_num_rows($resultado) == 0) {
