@@ -190,12 +190,12 @@ INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) VALUES(1,
 ////////////////////////////////////////////////// Insertar datos de los empleados de la tabla empleados 
 
 INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `Password`) VALUES
-(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', '196d6f1d668732655663ea5b5f1f3e0f'),
-(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'e3346b1398b0b11ed3d86586ade51522'),
-(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', '4a4079e06eb2f7ba7a12821c7c58a3f6'),
-(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'c4d62b6dcca08e5caf06c01889282859'),
-(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', '1a2ddc2db4693cfd16d534cde5572cc1'),
-(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'f1a543f5a2c5d49bc5dde298fcf716e4');
+(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', 'dg1'),
+(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'dg2'),
+(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'dg3'),
+(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'dg4'),
+(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'dg5'),
+(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c1');
 
 /*Password = Iniciales del departanento ejemplo direccion general=DG, numero consecutivo 
 nota= si el departamento solo tiene una palabra es la inicial y un numero consecutivo ejemplo = Comercio = c1*/
