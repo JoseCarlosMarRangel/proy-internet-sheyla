@@ -196,3 +196,6 @@ INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `A
 (4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'c4d62b6dcca08e5caf06c01889282859'),
 (9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', '1a2ddc2db4693cfd16d534cde5572cc1'),
 (10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'f1a543f5a2c5d49bc5dde298fcf716e4');
+
+/*Password = Iniciales del departanento ejemplo direccion general=DG, numero consecutivo 
+nota= si el departamento solo tiene una palabra es la inicial y un numero consecutivo ejemplo = Comercio = c1*/
