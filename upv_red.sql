@@ -181,12 +181,18 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) 
-VALUES
-(1, 'Direccion general'),
-(2, 'Direccion'),
-(3, 'Recursos Humanos'),
-(4, 'Administracion'),
-(5, 'Comercial'),
-(6, 'Legal'),
-(7, 'Produccion');
+
+///////////////////////////////////////////////////Insertar datos de departamentos
+
+INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) VALUES(1, 'Direccion general'),(2, 'Direccion'),(3, 'Recursos Humanos'),(4, 'Administracion'),(5, 'Comercial'),(6, 'Legal'),(7, 'Produccion');
+
+
+////////////////////////////////////////////////// Insertar datos de los empleados de la tabla empleados 
+
+INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `Password`) VALUES
+(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', '196d6f1d668732655663ea5b5f1f3e0f'),
+(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'e3346b1398b0b11ed3d86586ade51522'),
+(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', '4a4079e06eb2f7ba7a12821c7c58a3f6'),
+(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'c4d62b6dcca08e5caf06c01889282859'),
+(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', '1a2ddc2db4693cfd16d534cde5572cc1'),
+(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'f1a543f5a2c5d49bc5dde298fcf716e4');
