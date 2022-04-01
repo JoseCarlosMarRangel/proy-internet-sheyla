@@ -192,10 +192,10 @@ INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) VALUES(1,
 INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `Password`) VALUES
 (1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', 'dg1'),
 (2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'dg2'),
-(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'dg3'),
-(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'dg4'),
-(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'dg5'),
-(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c1');
+(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'd1'),
+(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'd2'),
+(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'c1'),
+(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c2');
 
 /*Password = Iniciales del departanento ejemplo direccion general=DG, numero consecutivo 
 nota= si el departamento solo tiene una palabra es la inicial y un numero consecutivo ejemplo = Comercio = c1*/
