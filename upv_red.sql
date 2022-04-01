@@ -180,3 +180,13 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) 
+VALUES
+(1, 'Direccion general'),
+(2, 'Direccion'),
+(3, 'Recursos Humanos'),
+(4, 'Administracion'),
+(5, 'Comercial'),
+(6, 'Legal'),
+(7, 'Produccion');
