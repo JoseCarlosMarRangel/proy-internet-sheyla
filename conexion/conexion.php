@@ -27,3 +27,9 @@ function valida_usuario_bd($usuario, $contrasena, $conexion)
         return true;
     }
 };
+
+function registrar_usuario_bd($nombre, $apellido, $correo, $usuario, $password, $conexion)
+{
+    echo "nombre: " . $nombre . "apellido: " . $apellido . "correo: " . $correo . "usuario: " . $usuario . "password: " . $password;
+    $query = "INSERT INTO ";
+}

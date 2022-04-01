@@ -14,7 +14,7 @@ if (isset($_POST['aceptar'])) {
     session_start();
     $_SESSION['u'] = $usuario;
     $valido = true;
-    header('Location: index.html');
+    header('Location: index.php');
 }
 
 ?>
