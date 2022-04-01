@@ -180,3 +180,22 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+///////////////////////////////////////////////////Insertar datos de departamentos
+
+INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) VALUES(1, 'Direccion general'),(2, 'Direccion'),(3, 'Recursos Humanos'),(4, 'Administracion'),(5, 'Comercial'),(6, 'Legal'),(7, 'Produccion');
+
+
+////////////////////////////////////////////////// Insertar datos de los empleados de la tabla empleados 
+
+INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `Password`) VALUES
+(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', 'dg1'),
+(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'dg2'),
+(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'd1'),
+(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'd2'),
+(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'c1'),
+(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c2');
+
+/*Password = Iniciales del departanento ejemplo direccion general=DG, numero consecutivo 
+nota= si el departamento solo tiene una palabra es la inicial y un numero consecutivo ejemplo = Comercio = c1*/
