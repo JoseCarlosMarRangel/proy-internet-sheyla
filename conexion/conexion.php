@@ -28,8 +28,14 @@ function valida_usuario_bd($usuario, $contrasena, $conexion)
     }
 };
 
-function registrar_usuario_bd($nombre, $apellido, $correo, $usuario, $password, $conexion)
+function registrar_usuario_bd($nombre, $apellido, $correo, $usuario, $password, $departamento, $conexion)
 {
-    echo "nombre: " . $nombre . "apellido: " . $apellido . "correo: " . $correo . "usuario: " . $usuario . "password: " . $password;
-    $query = "INSERT INTO ";
+    echo "nombre: " . $nombre . " apellido: " . $apellido . " correo: " . $correo . " usuario: " . $usuario . " password: " . $password . " departamento " . $departamento;
+    $query = "INSERT INTO empleados (ID_empleado,ID_departamento,Nombre_empleado,Apellido_empleado,Correo,Usuario,pass,rol) 
+    VALUES (DEFAULT,$departamento,'$nombre','$apellido','$correo','$usuario','$password',1)";
+    if (mysqli_query($conexion, $query)) {
+        echo "Registro exitoso";
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+    }
 }

@@ -5,16 +5,16 @@ if (isset($_POST['aceptar'])) {
     $nombre = $_POST['nomb'];
     $apellido = $_POST['ape'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = $_POST['contrasena'];
+    $departamento = $_POST['depa'];
+    $usuario = $_POST['user'];
 
-    if (registrar_usuario_bd($nombre, $apellido, $correo, $usuario, $password, $conexion)) {
-        echo "Usurio Registrado";
-        $registrado = true;
-    } else {
-        echo "Usuario No Registrado";
-        $registrado = false;
+    if (registrar_usuario_bd($nombre, $apellido, $email, $usuario, $password, $departamento, $conexion)) {
+        echo "Registro exitoso";
     }
 }
+
+
 
 ?>
 
@@ -36,6 +36,7 @@ if (isset($_POST['aceptar'])) {
         <input type="text" name="email" placeholder="Email" required="required" />
         <input type="text" name="user" placeholder="Usuario" required="required" />
         <input type="password" name="contrasena" placeholder="Contraseña" required="required" />
+        <input type="text" name="depa" placeholder="Departamento" required="required" />
         <button name="aceptar" type="submit">Registrar</button>
     </form>
 
