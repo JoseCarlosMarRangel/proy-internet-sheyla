@@ -78,6 +78,17 @@ CREATE TABLE `empleados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
+--
+--Estructura de tabla para la tabla 'eventos'
+--
+CREATE TABLE `eventos` (
+  `id_evento` int(11) NOT NULL,
+  `nombre_evento` varchar(30) NOT NULL,
+  `fecha` Date NOT NULL,
+  `Descripcion` varchar(50) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `inventario`
