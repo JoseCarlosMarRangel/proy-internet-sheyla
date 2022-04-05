@@ -29,11 +29,16 @@
             <h1>BIENVENIDO</h1>
             <p>Departamento</p>
             <a href="./registros_empleados/registros.php"> Registrar empleados</a>
+            
         </div>
 
         <div class="contenedorInferior">
-
-        </div>
+            <form action="upload.php" method="POST" enctype="multipart/form-data">
+                <h2>Subir archivos</h2>
+                <input type="file" name="file">
+                <p class="center"><input type="submit" value="subir archivos"></p>
+            </form>
+        </div>1
     </div>
 </body>
 
