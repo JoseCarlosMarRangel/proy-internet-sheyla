@@ -21,7 +21,6 @@ body{
     width: auto;
     height: 50px;
     background-color: #24262B;
-    border: 1px solid rgb(136, 136, 136);
 
 }
 
@@ -122,11 +121,6 @@ button{
 	top: 20px;
 	bottom: -10px;
 	margin-right: -19px;
-}
-
-
-.centrar{
-    margin-left: 575px;
 }
 
 .botones{
