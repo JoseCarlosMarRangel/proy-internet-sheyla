@@ -34,6 +34,26 @@ CREATE TABLE `empleados` (
   `Password` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+<<<<<<< HEAD
+=======
+-- --------------------------------------------------------
+--
+--Estructura de tabla para la tabla 'eventos'
+--
+CREATE TABLE `eventos` (
+  `id_evento` int(11) NOT NULL,
+  `nombre_evento` varchar(30) NOT NULL,
+  `fecha` Date NOT NULL,
+  `Descripcion` varchar(50) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inventario`
+--
+
+>>>>>>> c91deae6e1ade2ec3f901b6e6d00df24c6f27126
 CREATE TABLE `inventario` (
   `ID_inventario` int(11) NOT NULL,
   `Nombre` varchar(30) NOT NULL,
