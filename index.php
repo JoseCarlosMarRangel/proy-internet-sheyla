@@ -28,7 +28,7 @@
         <div class="contenedorMedio">
             <h1>BIENVENIDO</h1>
             <p>Departamento</p>
-            <a href="./registros_empleados/registros.php"> Registrar empleados</a>
+            <a href="./Empleados/empleados_registros.php"> Registrar empleados</a>
         </div>
 
         <div class="contenedorInferior">

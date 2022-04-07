@@ -39,3 +39,14 @@ function registrar_usuario_bd($nombre, $apellido, $correo, $usuario, $password, 
         echo "Error: " . $query . "<br>" . mysqli_error($conexion);
     }
 }
+
+function borrar_empleados($conexion, $usuario)
+{
+    echo "Borrar empleados";
+    $query = "DELETE FROM empleados WHERE usuario = '$usuario'";
+    if (mysqli_query($conexion, $query)) {
+        echo "borrado exitoso";
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+    }
+}

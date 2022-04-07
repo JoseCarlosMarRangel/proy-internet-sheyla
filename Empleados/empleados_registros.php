@@ -14,6 +14,13 @@ if (isset($_POST['aceptar'])) {
     }
 }
 
+if (isset($_POST['aceptar2'])) {
+
+    $user = $_POST['usuario'];
+    if (borrar_empleados($conexion, $user)) {
+        echo "borrado exitoso";
+    }
+}
 
 
 ?>
@@ -30,6 +37,8 @@ if (isset($_POST['aceptar'])) {
 
 <body>
 
+    <h1> Crear empleados o insertar </h1>
+
     <form method="post">
         <input type="text" name="nomb" placeholder="Nombre" required="required" />
         <input type="text" name="ape" placeholder="Apellido" required="required" />
@@ -39,6 +48,37 @@ if (isset($_POST['aceptar'])) {
         <input type="text" name="depa" placeholder="Departamento" required="required" />
         <button name="aceptar" type="submit">Registrar</button>
     </form>
+
+    <h1>Eliminar empleados o registros</h1>
+
+    <form method="post">
+        <input type="text" name="usuario" placeholder="Usuario" required="required">
+        <button name="aceptar2" type="submit"> Aceptar</button>
+    </form>
+
+    <h1>Tabla de Usuarioss</h1>
+    <br>
+    <table border="1">
+        <tr>
+            <td>ID Empleado</td>
+            <td>Nombre de Empleado</td>
+            <td>Usuario</td>
+        </tr>
+        <?php
+        $sql = "select ID_empleado, Nombre_empleado, Usuario from empleados";
+        $result = mysqli_query($conexion, $sql);
+        while ($mostrar = mysqli_fetch_array($result)) {
+        ?>
+        <tr>
+            <td><?php echo $mostrar['ID_empleado'] ?></td>
+            <td><?php echo $mostrar['Nombre_empleado'] ?></td>
+            <td><?php echo $mostrar['Usuario'] ?></td>
+        </tr>
+        <?php
+        }
+        ?>
+    </table>
+    <br />
 
 </body>
 
