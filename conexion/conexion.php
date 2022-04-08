@@ -61,3 +61,13 @@ function registrar_citas($nombre, $telefono, $descripcion, $fecha, $conexion)
         echo "Error: " . $query . "<br>" . mysqli_error($conexion);
     }
 }
+
+function borrar_citas($id, $conexion)
+{
+    $query = "DELETE FROM citas WHERE id_cita = $id";
+    if (mysqli_query($conexion, $query)) {
+        echo "Borrado exitoso exitoso";
+    } else {
+        echo "Error: " . $query . "br" . mysqli_error($conexion);
+    }
+}

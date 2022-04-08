@@ -14,8 +14,8 @@ if (isset($_POST['aceptar'])) {
 
 if (isset($_POST['aceptar2'])) {
 
-    $user = $_POST['usuario'];
-    if (borrar_empleados($conexion, $user)) {
+    $id = $_POST['number_id'];
+    if (borrar_citas($id, $conexion)) {
         echo "borrado exitoso";
     }
 }
@@ -41,6 +41,13 @@ if (isset($_POST['aceptar2'])) {
         <textarea type="textarea" name="desc" placeholder="Descripción" required="required"></textarea>
         <input type="date" name="fecha" placeholder="Fecha" required="required" />
         <button name="aceptar" type="submit">Registrar Cita</button>
+    </form>
+
+    <h2>Eliminar Citas</h2>
+
+    <form method="post">
+        <input type="number" name="number_id" placeholder="ID de la cita" required="required" />
+        <button name="aceptar2" type="submit">Eliminar</button>
     </form>
 
 
