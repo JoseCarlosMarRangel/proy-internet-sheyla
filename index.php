@@ -28,12 +28,8 @@
         <div class="contenedorMedio">
             <h1>BIENVENIDO</h1>
             <p>Departamento</p>
-<<<<<<< HEAD
             <a href="./Empleados/empleados_registros.php"> Registrar empleados</a>
-=======
-            <a href="./registros_empleados/registros.php"> Registrar empleados</a>
-            
->>>>>>> c91deae6e1ade2ec3f901b6e6d00df24c6f27126
+            <a href="./Citas/citas_registros.php"> Registrar Citas</a>
         </div>
 
         <div class="contenedorInferior">
@@ -42,7 +38,7 @@
                 <input type="file" name="file">
                 <p class="center"><input type="submit" value="subir archivos"></p>
             </form>
-        </div>1
+        </div>
     </div>
 </body>
 

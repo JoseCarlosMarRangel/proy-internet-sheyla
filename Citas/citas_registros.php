@@ -1,3 +1,26 @@
+<?php
+
+require "../conexion/conexion.php";
+if (isset($_POST['aceptar'])) {
+    $nombre = $_POST['nomb_cliente'];
+    $telefono = $_POST['tel'];
+    $descripcion = $_POST['desc'];
+    $fecha = $_POST['fecha'];
+
+    if (registrar_citas($nombre, $telefono, $descripcion, $fecha, $conexion)) {
+        echo "Registro exitoso";
+    }
+}
+
+if (isset($_POST['aceptar2'])) {
+
+    $user = $_POST['usuario'];
+    if (borrar_empleados($conexion, $user)) {
+        echo "borrado exitoso";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +37,8 @@
 
     <form method="post">
         <input type="text" name="nomb_cliente" placeholder="Nombre" required="required" />
-        <input type="number" name="tel" placeholder="Teléfono" required="required" />
-        <input type="text" name="desc" placeholder="Descripción" required="required" />
+        <input type="text" name="tel" placeholder="Teléfono" required="required" />
+        <textarea type="textarea" name="desc" placeholder="Descripción" required="required"></textarea>
         <input type="date" name="fecha" placeholder="Fecha" required="required" />
         <button name="aceptar" type="submit">Registrar Cita</button>
     </form>
@@ -28,7 +51,8 @@
             <td>ID Cita</td>
             <td>Nombre de Cliente</td>
             <td>Teléfono</td>
-            <td></td>
+            <td>Descripcion</td>
+            <td>Fecha</td>
         </tr>
         <?php
         $sql = "select id_cita, Nombre_cliente, Telefono, Descripcion, Fechas from citas";

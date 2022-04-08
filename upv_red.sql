@@ -1,19 +1,36 @@
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 CREATE TABLE `citas` (
   `Id_cita` int(11) NOT NULL,
   `Nombre_cliente` varchar(30) NOT NULL,
-  `Telefono` int(11) NOT NULL,
+  `Telefono` bigint(30) NOT NULL,
   `Descripcion` varchar(50) NOT NULL,
   `Fechas` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO `citas` (`Id_cita`, `Nombre_cliente`, `Telefono`, `Descripcion`, `Fechas`) VALUES
+(1, 'carl', 8342666114, 'soy carlos', '2022-04-13');
+
+
 
 CREATE TABLE `departamentos` (
   `ID_departamento` int(11) NOT NULL,
   `Nombre_departamento` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) VALUES
+(1, 'Direccion general'),
+(2, 'Direccion'),
+(3, 'Recursos Humanos'),
+(4, 'Administracion'),
+(5, 'Comercial'),
+(6, 'Legal'),
+(7, 'Produccion');
 
 CREATE TABLE `documento` (
   `ID_documento` int(11) NOT NULL,
@@ -31,15 +48,25 @@ CREATE TABLE `empleados` (
   `Apellido_empleado` varchar(30) NOT NULL,
   `Correo` varchar(40) NOT NULL,
   `Usuario` varchar(30) NOT NULL,
-  `Password` varchar(32) NOT NULL
+  `pass` varchar(32) NOT NULL,
+  `rol` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-<<<<<<< HEAD
-=======
--- --------------------------------------------------------
---
---Estructura de tabla para la tabla 'eventos'
---
+INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `pass`, `rol`) VALUES
+(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', 'dg1', 0),
+(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'dg2', 0),
+(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'd1', 0),
+(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'd2', 0),
+(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'c1', 0),
+(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c2', 0);
+
+CREATE TABLE `inventario` (
+  `ID_inventario` int(11) NOT NULL,
+  `Nombre` varchar(30) NOT NULL,
+  `Stock` int(11) NOT NULL,
+  `Descripcion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE `eventos` (
   `id_evento` int(11) NOT NULL,
   `nombre_evento` varchar(30) NOT NULL,
@@ -47,13 +74,6 @@ CREATE TABLE `eventos` (
   `Descripcion` varchar(50) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `inventario`
---
-
->>>>>>> c91deae6e1ade2ec3f901b6e6d00df24c6f27126
 CREATE TABLE `inventario` (
   `ID_inventario` int(11) NOT NULL,
   `Nombre` varchar(30) NOT NULL,

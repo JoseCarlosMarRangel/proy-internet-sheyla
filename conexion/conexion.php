@@ -3,8 +3,8 @@
 
 $bd = 'upv_red';
 $servidor = 'localhost';
-$usuario = 'root'; //$usuario
-$contrasena = ''; //$contrasena
+$usuario = 'ghost'; //$usuario
+$contrasena = '123'; //$contrasena
 
 // * Creamos la conexion a la base de datos
 $conexion = mysqli_connect($servidor, $usuario, $contrasena, $bd);
@@ -17,7 +17,7 @@ if (!$conexion) {
 
 function valida_usuario_bd($usuario, $contrasena, $conexion)
 {
-    $query = "SELECT * FROM empleados WHERE Usuario = '$usuario' AND Password = '$contrasena'";
+    $query = "SELECT * FROM empleados WHERE Usuario = '$usuario' AND pass = '$contrasena'";
     //echo $query;
     $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
     $filas = mysqli_num_rows($resultado);
@@ -46,6 +46,17 @@ function borrar_empleados($conexion, $usuario)
     $query = "DELETE FROM empleados WHERE usuario = '$usuario'";
     if (mysqli_query($conexion, $query)) {
         echo "borrado exitoso";
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+    }
+}
+
+function registrar_citas($nombre, $telefono, $descripcion, $fecha, $conexion)
+{
+    $query = "INSERT INTO citas (ID_cita,Nombre_cliente,Telefono,Descripcion,Fechas) 
+    VALUES (DEFAULT,'$nombre',$telefono,'$descripcion','$fecha')";
+    if (mysqli_query($conexion, $query)) {
+        echo "Registro exitoso";
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($conexion);
     }
