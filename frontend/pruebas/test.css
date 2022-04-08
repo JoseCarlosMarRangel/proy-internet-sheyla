@@ -2,82 +2,62 @@
   margin: 0px;
   padding: 0px;
   font-family: Arial, Helvetica, sans-serif;
-  
 }
 
-body{
+html{
   background-color: #171B29;
 }
 .contenedorPrincipal{
   margin: auto;
   width: auto;
-  height: 900px;
+  height: auto;
   background-color: #171B29;
 
 }
 
-.barraSuperior{
-  margin: auto;
-  width: auto;
-  height: 50px;
-  background-color: #24262B;
-
-}
-
-.barraSuperiorUsuario{
-  float: right;
-  height: 50px;
-  width: 250px;
-  color: white;
+.navbar {
+  border-radius: 0px;
 }
 
 .contenedorMedio{
   width: auto;
-  height: 250px;
+  padding: 80px;
   background: rgb(244,1,0);
   background: linear-gradient(0deg, rgba(244,1,0,1) 0%, rgba(121,9,40,1) 54%, rgba(154,0,168,1) 100%);
   border-bottom: 1px solid rgba(65, 65, 65, 0.603);
   color: black;
-  
+
 }
+
 
 .contenedorMedio p, h1{
   text-align: center;
   font-weight: lighter;
-
-
+  color: black;
 }
 
-.contenedorInferior{
-  margin: auto;
-  width: auto;
-  height: 370px;
-  background-color: #171B29;
-  
-
+.main{
+  background-color: #171B29; 
 }  
 
-.contenedorInferior .departamentos{
+
+
+.departamentos{
   float: left;
   width: 200px;
   height: 250px;
   border-radius: 13px 13px 13px 13px;
-  margin-top: 60px;
-  margin-left: 100px;
+
+}
+
+.departamentos h1{
+  font-size: 20px;
+  text-align: center;
   color: white;
 
 }
 
-.contenedorInferior .departamentos h1{
-  font-size: 20px;
-  margin-left: -75px;
-  margin-top: -5px;
-}
-
-.label{
-  margin-left: 100px;
-}
-.contenedorInferior .departamentos .departamentoImagen{
+.departamentos .departamentoImagen{
   margin: auto;
   width: auto;
   height: 130px;
@@ -96,9 +76,10 @@ button{
   color: white;
 }
 
+
 .carousel {
   margin-bottom: 0;
-  padding: 0 150px 200px 150px;
+  padding: 0 150px 0px 150px;
 }
 /* The controlsy */
 .carousel-control {
@@ -121,8 +102,4 @@ right: 50%;
 top: 20px;
 bottom: -10px;
 margin-right: -19px;
-}
-
-.botones{
-  color: white;
 }

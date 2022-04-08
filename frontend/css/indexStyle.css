@@ -99,7 +99,6 @@ right: -12px;
 /* The indicators */
 .carousel-indicators {
 right: 50%;
-top: 20px;
-bottom: -10px;
+bottom: -40px;
 margin-right: -19px;
 }
