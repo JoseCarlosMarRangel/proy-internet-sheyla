@@ -61,7 +61,7 @@ if (isset($_POST['aceptar'])) {
             <form method="post">
                 <input type="text" name="u" placeholder="Username" required="required" />
                 <input type="password" name="p" placeholder="Password" required="required" />
-                <button name="aceptar" type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+                <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
             </form>
         </div>
     </div>

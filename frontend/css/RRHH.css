@@ -1,0 +1,36 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contenedorPrincipal{
+    width: auto;
+    height: 658px;
+    background-color: rgb(22, 22, 201);
+}
+
+.barraSuperior{
+    margin: auto;
+    width: auto;
+    height: 150px;
+    background-color: rgb(161, 161, 161);
+    color: white;
+    text-align: center;
+}
+.contenedorOpciones{
+    margin: auto;
+    width: auto;
+    height: auto;
+}
+
+.opciones{
+    width: 205px;
+    height: 300px;
+    float: left;
+    border-radius: 13px 13px 13px 13px;
+    background-color: rgb(179, 179, 179);
+    margin-top: 100px;
+    margin-left: 100px;
+
+}
