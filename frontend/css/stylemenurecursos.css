@@ -139,3 +139,27 @@ button{
     background-color: white;
     width: 100%;
 }
+
+.contenedorTabla{
+    width: 1000px;
+    height: auto;
+    margin-top: 40px;
+    margin-left: 60px;
+    background-color: rgb(255, 255, 255);
+    float: left;
+}
+
+.contenedorBotones{
+  background-color: #171B29;
+  margin-top: 40px;
+}
+
+
+.botones{
+  width: 150px;
+  height: 45px;
+  border-radius: 13px 13px 13px 13px;
+  border: none;
+  font-weight:bolder;
+  background-color: grey;
+}
