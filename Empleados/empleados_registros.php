@@ -80,6 +80,8 @@ if (isset($_POST['aceptar2'])) {
     </table>
     <br />
 
+    <!-- Falta modificar usuarios -->
+
 </body>
 
 </html>
