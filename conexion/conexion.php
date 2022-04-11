@@ -40,6 +40,19 @@ function registrar_usuario_bd($nombre, $apellido, $correo, $usuario, $password, 
     }
 }
 
+function modificar_empleado($nombre, $apellido, $correo, $usuario, $password, $departamento, $conexion, $id)
+{
+    $query = "UPDATE empleados SET Nombre_empleado = '$nombre',
+     Apellido_empleado = '$apellido', Correo = '$correo',
+      Usuario = '$usuario', pass = '$password', ID_departamento = '$departamento'
+       WHERE ID_empleado = '$id'";
+    if (mysqli_query($conexion, $query)) {
+        echo "Modificacion exitosa";
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+    }
+}
+
 function borrar_empleados($conexion, $usuario)
 {
     echo "Borrar empleados";

@@ -14,6 +14,21 @@ if (isset($_POST['aceptar'])) {
     }
 }
 
+if (isset($_POST['aceptar3'])) {
+    $nombre = $_POST['nomb'];
+    $apellido = $_POST['ape'];
+    $email = $_POST['email'];
+    $password = $_POST['contrasena'];
+    $departamento = $_POST['depa'];
+    $usuario = $_POST['user'];
+    $id = $_POST['id'];
+
+    if (modificar_empleado($nombre, $apellido, $email, $usuario, $password, $departamento, $conexion, $id)) {
+        echo "Modificacion exitosa";
+    }
+};
+
+
 if (isset($_POST['aceptar2'])) {
 
     $user = $_POST['usuario'];
@@ -49,7 +64,20 @@ if (isset($_POST['aceptar2'])) {
         <button name="aceptar" type="submit">Registrar</button>
     </form>
 
+    <h1>Modificar empleados</h1>
+    <form method="post">
+        <input type="text" name="nomb" placeholder="Nombre" required="required" />
+        <input type="text" name="ape" placeholder="Apellido" required="required" />
+        <input type="text" name="email" placeholder="Email" required="required" />
+        <input type="text" name="user" placeholder="Usuario" required="required" />
+        <input type="password" name="contrasena" placeholder="Contraseña" required="required" />
+        <input type="text" name="depa" placeholder="Departamento" required="required" />
+        <input type="number" name="id" placeholder="ID" required="required" />
+        <button name="aceptar3" type="submit">Modificar</button>
+    </form>
+
     <h1>Eliminar empleados o registros</h1>
+
 
     <form method="post">
         <input type="text" name="usuario" placeholder="Usuario" required="required">
