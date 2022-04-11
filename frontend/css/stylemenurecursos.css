@@ -155,11 +155,13 @@ button{
 }
 
 
-.botones{
-  width: 150px;
-  height: 45px;
-  border-radius: 13px 13px 13px 13px;
-  border: none;
-  font-weight:bolder;
-  background-color: grey;
-}
+button{
+    background: rgb(252,4,65);
+    background: linear-gradient(90deg, rgba(252,4,65,1) 21%, rgba(246,45,168,1) 100%);
+    width: 100px;
+    height: 35px;
+    border-radius: 20px 20px 20px 20px;
+    border: none;
+    font-weight:bolder;
+    color: white;
+  }
