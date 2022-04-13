@@ -2,81 +2,63 @@
     margin: 0px;
     padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
-    
 }
 
-body{
-    background-color: #171B29;
+html, .row, .container-fluid {
+    background: rgb(244,110,195);
+    background: linear-gradient(90deg, rgba(244,110,195,1) 0%, rgba(238,96,156,1) 61%, rgba(181,101,217,1) 100%);
+
 }
+
+
 .contenedorPrincipal{
     margin: auto;
     width: auto;
-    height: 900px;
+    height: auto;
     background-color: #171B29;
 
 }
 
-.barraSuperior{
-    margin: auto;
-    width: auto;
-    height: 50px;
-    background-color: #24262B;
-
-}
-
-.barraSuperiorUsuario{
-    float: right;
-    height: 50px;
-    width: 250px;
-    color: white;
+.navbar {
+    border-radius: 0px;
 }
 
 .contenedorMedio{
     width: auto;
-    height: 250px;
-    background: rgb(244,1,0);
-    background: linear-gradient(0deg, rgba(244,1,0,1) 0%, rgba(121,9,40,1) 54%, rgba(154,0,168,1) 100%);
+    padding: 80px;
     border-bottom: 1px solid rgba(65, 65, 65, 0.603);
     color: black;
-    
+
 }
+
 
 .contenedorMedio p, h1{
     text-align: center;
     font-weight: lighter;
-
-
+    color: #000000;
 }
 
-.contenedorInferior{
-    margin: auto;
-    width: auto;
-    height: 370px;
-    background-color: #171B29;
-    
-
+.main{
+    background: rgb(244,110,195);
+    background: linear-gradient(90deg, rgba(244,110,195,1) 0%, rgba(238,96,156,1) 61%, rgba(181,101,217,1) 100%);
 }  
 
-.contenedorInferior .departamentos{
+.departamentos{
     float: left;
     width: 200px;
     height: 250px;
     border-radius: 13px 13px 13px 13px;
-    margin-top: 60px;
-    margin-left: 100px;
     color: white;
 
 }
 
-.contenedorInferior .departamentos h1{
-    font-size: 15px;
-    
+.departamentos h1{
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
 }
 
-.label{
-    margin-left: 100px;
-}
-.contenedorInferior .departamentos .departamentoImagen{
+.departamentos .departamentoImagen{
     margin: auto;
     width: auto;
     height: 130px;
@@ -84,78 +66,7 @@ body{
     border-radius: 5px 5px 5px 5px;
 }
 
-button{
-    background: rgb(252,4,65);
-    background: linear-gradient(90deg, rgba(252,4,65,1) 21%, rgba(246,45,168,1) 100%);
-    width: 100px;
-    height: 35px;
-    border-radius: 20px 20px 20px 20px;
-    border: none;
-    font-weight:bolder;
-    color: white;
-}
-
-.carousel {
-    margin-bottom: 0;
-    padding: 0 150px 200px 150px;
-}
-/* The controlsy */
-.carousel-control {
-	left: -12px;
-    height: 40px;
-	width: 40px;
-    border-radius: 23px 23px 23px 23px;
-    margin-top: 150px;
-}
-.carousel-control.right {
-	right: -12px;
-}
-
-.carousel-control.left {
-	right: -12px;
-}
-/* The indicators */
-.carousel-indicators {
-	right: 50%;
-	top: 20px;
-	bottom: -10px;
-	margin-right: -19px;
-}
-
-.botones{
-    color: white;
-}
-
-.botones button{
-    color: white;
-    margin: 10px;
-}
-
-.container{
-    margin-top: 150px;
-}
-
-.table{
-    background-color: white;
-    width: 100%;
-}
-
-.contenedorTabla{
-    width: 1000px;
-    height: auto;
-    margin-top: 40px;
-    margin-left: 60px;
-    background-color: rgb(255, 255, 255);
-    float: left;
-}
-
-.contenedorBotones{
-  background-color: #171B29;
-  margin-top: 40px;
-}
-
-
-button{
+.button- {
     background: rgb(252,4,65);
     background: linear-gradient(90deg, rgba(252,4,65,1) 21%, rgba(246,45,168,1) 100%);
     width: 100px;
