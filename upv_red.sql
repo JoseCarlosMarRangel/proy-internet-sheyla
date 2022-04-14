@@ -6,9 +6,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `citas` (
   `Id_cita` int(11) NOT NULL,
-  `Nombre_cliente` varchar(30) NOT NULL,
+  `title` varchar(30) NOT NULL,
   `Telefono` bigint(30) NOT NULL,
-  `Descripcion` varchar(50) NOT NULL,
+  `Description` varchar(50) NOT NULL,
   `Fechas` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
