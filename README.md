@@ -1,5 +1,7 @@
 ### Recuerdem modificar el acceso en el archivo de conexion para que funcione con ustedes con la base de datos
 
+### Si vas a subir aqui mas te vale integrarlo todo, esto es lo final
+
 ### Gestores de base de datos
 - MySQL
 - Mariadb
