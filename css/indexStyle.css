@@ -4,9 +4,13 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-html{
-  background-color: #171B29;
+html, .row, .container-fluid {
+  background: rgb(244,110,195);
+  background: linear-gradient(90deg, rgba(244,110,195,1) 0%, rgba(238,96,156,1) 61%, rgba(181,101,217,1) 100%);
+
 }
+
+
 .contenedorPrincipal{
   margin: auto;
   width: auto;
@@ -22,8 +26,6 @@ html{
 .contenedorMedio{
   width: auto;
   padding: 80px;
-  background: rgb(244,1,0);
-  background: linear-gradient(0deg, rgba(244,1,0,1) 0%, rgba(121,9,40,1) 54%, rgba(154,0,168,1) 100%);
   border-bottom: 1px solid rgba(65, 65, 65, 0.603);
   color: black;
 
@@ -33,28 +35,27 @@ html{
 .contenedorMedio p, h1{
   text-align: center;
   font-weight: lighter;
-  color: black;
+  color: #000000;
 }
 
 .main{
-  background-color: #171B29; 
+  background: rgb(244,110,195);
+  background: linear-gradient(90deg, rgba(244,110,195,1) 0%, rgba(238,96,156,1) 61%, rgba(181,101,217,1) 100%);
 }  
-
-
 
 .departamentos{
   float: left;
   width: 200px;
   height: 250px;
   border-radius: 13px 13px 13px 13px;
+  color: white;
 
 }
 
 .departamentos h1{
   font-size: 20px;
   text-align: center;
-  color: white;
-
+  color: #ffffff;
 }
 
 .departamentos .departamentoImagen{
@@ -65,7 +66,7 @@ html{
   border-radius: 5px 5px 5px 5px;
 }
 
-button{
+.button- {
   background: rgb(252,4,65);
   background: linear-gradient(90deg, rgba(252,4,65,1) 21%, rgba(246,45,168,1) 100%);
   width: 100px;
@@ -76,29 +77,3 @@ button{
   color: white;
 }
 
-
-.carousel {
-  margin-bottom: 0;
-  padding: 0 150px 0px 150px;
-}
-/* The controlsy */
-.carousel-control {
-left: -12px;
-  height: 40px;
-width: 40px;
-  border-radius: 23px 23px 23px 23px;
-  margin-top: 150px;
-}
-.carousel-control.right {
-right: -12px;
-}
-
-.carousel-control.left {
-right: -12px;
-}
-/* The indicators */
-.carousel-indicators {
-right: 50%;
-bottom: -40px;
-margin-right: -19px;
-}
