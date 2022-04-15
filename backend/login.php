@@ -1,6 +1,6 @@
 <?php
 
-require "conexion/conexion.php";
+require "conexion.php";
 $valido = false;
 if (isset($_POST['aceptar'])) {
     $usuario = $_POST['u'];
