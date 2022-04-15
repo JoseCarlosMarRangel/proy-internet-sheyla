@@ -1,4 +1,3 @@
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -12,25 +11,10 @@ CREATE TABLE `citas` (
   `Fechas` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-INSERT INTO `citas` (`Id_cita`, `Nombre_cliente`, `Telefono`, `Descripcion`, `Fechas`) VALUES
-(1, 'carl', 8342666114, 'soy carlos', '2022-04-13');
-
-
-
 CREATE TABLE `departamentos` (
   `ID_departamento` int(11) NOT NULL,
   `Nombre_departamento` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) VALUES
-(1, 'Direccion general'),
-(2, 'Direccion'),
-(3, 'Recursos Humanos'),
-(4, 'Administracion'),
-(5, 'Comercial'),
-(6, 'Legal'),
-(7, 'Produccion');
 
 CREATE TABLE `documento` (
   `ID_documento` int(11) NOT NULL,
@@ -52,26 +36,11 @@ CREATE TABLE `empleados` (
   `rol` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `pass`, `rol`) VALUES
-(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', 'dg1', 0),
-(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'dg2', 0),
-(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'd1', 0),
-(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'd2', 0),
-(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'c1', 0),
-(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c2', 0);
-
-CREATE TABLE `inventario` (
-  `ID_inventario` int(11) NOT NULL,
-  `Nombre` varchar(30) NOT NULL,
-  `Stock` int(11) NOT NULL,
-  `Descripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 CREATE TABLE `eventos` (
   `id_evento` int(11) NOT NULL,
   `nombre_evento` varchar(30) NOT NULL,
-  `fecha` Date NOT NULL,
-  `Descripcion` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
+  `Descripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `inventario` (
@@ -99,16 +68,16 @@ ALTER TABLE `inventario`
   ADD PRIMARY KEY (`ID_inventario`);
 
 ALTER TABLE `citas`
-  MODIFY `Id_cita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 ALTER TABLE `departamentos`
-  MODIFY `ID_departamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 ALTER TABLE `documento`
   MODIFY `ID_documento` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `empleados`
-  MODIFY `ID_empleado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 ALTER TABLE `inventario`
   MODIFY `ID_inventario` int(11) NOT NULL AUTO_INCREMENT;
@@ -120,13 +89,22 @@ ALTER TABLE `empleados`
   ADD CONSTRAINT `dept` FOREIGN KEY (`ID_departamento`) REFERENCES `departamentos` (`ID_departamento`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
-INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) VALUES(1, 'Direccion general'),(2, 'Direccion'),(3, 'Recursos Humanos'),(4, 'Administracion'),(5, 'Comercial'),(6, 'Legal'),(7, 'Produccion');
+INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) VALUES
+(1, 'Direccion general'),
+(2, 'Direccion'),
+(3, 'Recursos Humanos'),
+(4, 'Administracion'),
+(5, 'Comercial'),
+(6, 'Legal'),
+(7, 'Produccion');
 
-INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `Password`) VALUES
-(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', 'dg1'),
-(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'dg2'),
-(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'd1'),
-(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'd2'),
-(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'c1'),
-(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c2');
+INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `pass`, `rol`) VALUES
+(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', 'dg1', 0),
+(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'dg2', 0),
+(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'd1', 0),
+(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'd2', 0),
+(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'c1', 0),
+(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c2', 0);
 
+INSERT INTO `citas` (`Id_cita`, `title`, `Telefono`, `Description`, `Fechas`) VALUES
+(1, 'carl', 8342666114, 'soy carlos', '2022-04-13');

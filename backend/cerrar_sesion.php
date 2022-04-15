@@ -3,6 +3,7 @@
 require 'abrir_session.php';
 $_SESSION = array();
 session_destroy();
+header('Location: ../index.php');
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,6 @@ session_destroy();
     <p>
 
     <h1>Session Cerrada, hasta la proxima</h1>
-    <a href="index.php">regresar</a>
 
     </p>
 </body>

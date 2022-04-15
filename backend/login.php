@@ -6,15 +6,16 @@ if (isset($_POST['aceptar'])) {
     $usuario = $_POST['u'];
     $contrasena = $_POST['p'];
 
-    if (valida_usuario_bd($usuario, $contrasena, $conexion)) {
+    if (!valida_usuario_bd($usuario, $contrasena, $conexion)) {
+        #echo 'No es valido <br/>';
         $valido = false;
     } else {
+        #echo 'Es valido <br/>';
+        session_start();
+        $_SESSION['u'] = $usuario;
         $valido = true;
+        header('Location: ../index.php');
     }
-    session_start();
-    $_SESSION['u'] = $usuario;
-    $valido = true;
-    header('Location: index.php');
 }
 
 ?>
@@ -61,7 +62,7 @@ if (isset($_POST['aceptar'])) {
             <form method="post">
                 <input type="text" name="u" placeholder="Username" required="required" />
                 <input type="password" name="p" placeholder="Password" required="required" />
-                <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+                <button type="submit" class="btn btn-primary btn-block btn-large" name="aceptar">Let me in.</button>
             </form>
         </div>
     </div>

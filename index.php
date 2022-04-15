@@ -39,10 +39,19 @@
             <li class="nav-item dropdown">
                 <?php
 
-                if (isset($_SESSION['user'])) {
-                    echo '<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . $_SESSION['user'] . '</a>';
+                session_start();
+                if (!isset($_SESSION['u'])) {
+                    echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    <i class='fas fa-user fa-fw'></i>Usuario</a>";
+                    echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>";
+                    echo "<a class='dropdown-item' href='./backend/login.php'>Iniciar sesión</a>";
+                    echo "</div>";
                 } else {
-                    echo '<a class="nav-link dropdown-toggle" id="userDropdown" href="./backend/login.php">Iniciar Sesión</a>';
+                    echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    <i class='fas fa-user fa-fw'></i>" . $_SESSION['u'] . "</a>";
+                    echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>";
+                    echo "<a class='dropdown-item' href='./backend/cerrar_sesion.php'>Cerrar sesión</a>";
+                    echo "</div>";
                 }
 
                 ?>

@@ -23,6 +23,7 @@ function valida_usuario_bd($usuario, $contrasena, $conexion)
     $filas = mysqli_num_rows($resultado);
     if (mysqli_num_rows($resultado) == 0) {
         return false;
+        echo "Usuario o contraseña incorrectos";
     } else {
         return true;
     }
