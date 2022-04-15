@@ -168,7 +168,7 @@ else
     </nav>
 
     <div align="centers">
-      <form action="pajas.php" method="post">
+      <form action="agenda_produccion.php" method="post">
         <input type="submit" name="borrar" value="Borrar">
         <input type="number" name="id" placeholder="ID">
       </form>
