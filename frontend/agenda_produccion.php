@@ -1,27 +1,57 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "upv_red";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+require "../backend/conexion.php";
+
+function console_log($output, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
+');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
+
+
+
 if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
   {
     $sql = "INSERT INTO citas (Id_cita,title,Telefono,Description, Fechas)
         VALUES (DEFAULT,'".$_POST['eventTitle']."','".$_POST['Telefono']."' ,'".$_POST['Descripcion']."' , '".$_POST['eventDate']."')";
-    if (mysqli_query($conn,$sql)) {
+    if (mysqli_query($conexion,$sql)) {
         //echo "New event added successfully";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        //echo "Error: " . $sql . "<br>" . $conn->error;
     }
   }
+
+ if(isset($_POST['borrar'])) {
+    //console_log("CHINGADERA JALA POR FAVOR");
+    $id = $_POST['id'];
+    $query = "DELETE FROM citas WHERE Id_cita = $id";
+    if (mysqli_query($conexion, $query)) {
+        //echo "Borrado exitoso exitoso";
+        $sql = "SELECT Id_cita,title, Description,Telefono ,Fechas as start FROM citas";
+        $result = mysqli_query($conexion,$sql); 
+        $myArray = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+                //echo "Descripcion:" . $row["title"];
+                $myArray[] = $row;
+            }
+        } 
+        else 
+        {
+            //echo "0 results";
+        }
+    } else {
+        //echo "Error: " . $query . "br" . mysqli_error($conexion);
+    }
+}
+
+
   //echo "Connected successfully";
-$sql = "SELECT title, Description,Telefono ,Fechas as start FROM citas";
-$result = mysqli_query($conn,$sql); 
+$sql = "SELECT Id_cita,title, Description,Telefono ,Fechas as start FROM citas";
+$result = mysqli_query($conexion,$sql); 
 $myArray = array();
 if ($result->num_rows > 0) {
 // output data of each row
@@ -32,8 +62,10 @@ if ($result->num_rows > 0) {
 } 
 else 
 {
-    echo "0 results";
+    //echo "0 results";
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -66,9 +98,6 @@ else
     <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script>
 
     <script>
-
-
-
   $(document).ready(function() {
     $('#calendar').fullCalendar({
       header: {
@@ -77,9 +106,9 @@ else
         right: 'month,basicWeek,basicDay'
       },
       eventRender: function(event, element) { 
+            element.find('.fc-title').append("<br/>" + event.Id_cita); 
             element.find('.fc-title').append("<br/>" + event.Description); 
             element.find('.fc-title').append("<br/>" + event.Telefono); 
-            console.log(event)
       },
       defaultDate: new Date(),
       navLinks: true, // can click day/week names to navigate views
@@ -88,10 +117,11 @@ else
       dayClick: function(date, jsEvent, view) {
         $("#successModal").modal("show");
         $("#eventDate").val(date.format());
-      },    
+      },
       events: <?php echo json_encode($myArray);?>
     });
   });
+
 </script>
 <style>
   body {
@@ -137,6 +167,14 @@ else
         </ul>
     </nav>
 
+    <div align="centers">
+      <form action="pajas.php" method="post">
+        <input type="submit" name="borrar" value="Borrar">
+        <input type="number" name="id" placeholder="ID">
+      </form>
+    </div>
+
+
   
   <div id='calendar'></div>
   <div class="modal fade" id="successModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
@@ -160,6 +198,8 @@ else
     </div>
     <button type="submit" value="submit" name="submit" class="btn btn-default">Submit</button>
   </form>
+  
+
   </div>
 </div>
 </div>
