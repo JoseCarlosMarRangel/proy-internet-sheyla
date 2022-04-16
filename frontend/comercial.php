@@ -14,8 +14,8 @@ function console_log($output, $with_script_tags = true) {
 
 if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
   {
-    $sql = "INSERT INTO citas (Id_cita,title,Telefono,Description, Fechas)
-        VALUES (DEFAULT,'".$_POST['eventTitle']."','".$_POST['Telefono']."' ,'".$_POST['Descripcion']."' , '".$_POST['eventDate']."')";
+    $sql = "INSERT INTO eventos (id_evento,title,fecha,Descripcion)
+        VALUES (DEFAULT,'".$_POST['eventTitle']."', '".$_POST['eventDate']."' , '".$_POST['Descripcion']."')";
     if (mysqli_query($conexion,$sql)) {
         //echo "New event added successfully";
     } else {
@@ -26,10 +26,10 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
  if(isset($_POST['borrar'])) {
     //console_log("CHINGADERA JALA POR FAVOR");
     $id = $_POST['id'];
-    $query = "DELETE FROM citas WHERE Id_cita = $id";
+    $query = "DELETE FROM eventos WHERE id_evento = $id";
     if (mysqli_query($conexion, $query)) {
         //echo "Borrado exitoso exitoso";
-        $sql = "SELECT Id_cita,title, Description,Telefono ,Fechas as start FROM citas";
+        $sql = "SELECT id_evento,title, Descripcion,fecha as start FROM eventos";
         $result = mysqli_query($conexion,$sql); 
         $myArray = array();
         if ($result->num_rows > 0) {
@@ -50,7 +50,7 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
 
 
   //echo "Connected successfully";
-$sql = "SELECT Id_cita,title, Description,Telefono ,Fechas as start FROM citas";
+$sql = "SELECT id_evento,title, Descripcion,fecha as start FROM eventos";
 $result = mysqli_query($conexion,$sql); 
 $myArray = array();
 if ($result->num_rows > 0) {
@@ -74,12 +74,12 @@ else
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Produccion</title>
+    <title>Comercial</title>
 
      <!-- stylesheets and bootstrap -->
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <title>Produccion</title>
+     <title>Comercial</title>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
      <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
@@ -114,9 +114,8 @@ else
             right: 'month,basicWeek,basicDay'
           },
           eventRender: function(event, element) { 
-                element.find('.fc-title').append("<br/>" + event.Id_cita); 
-                element.find('.fc-title').append("<br/>" + event.Description); 
-                element.find('.fc-title').append("<br/>" + event.Telefono); 
+                element.find('.fc-title').append("<br/>" + event.id_evento); 
+                element.find('.fc-title').append("<br/>" + event.Descripcion); 
                 console.log(event)
           },
           defaultDate: new Date(),
@@ -182,12 +181,10 @@ else
                     <h4 class="modal-title">Modal Header</h4>
                   </div>
                   <div class="modal-body">
-                    <form action="agenda_produccion.php" method="post">
+                    <form action="comercial.php" method="post">
                       <div class="form-group">
                         <label for="eventtitle">Nombre cliente:</label>
                         <input type="eventTitle" name="eventTitle" class="form-control" id="eventTitle" required="">
-                        <label for="Telefono">Telefono:</label>
-                        <input type="number" name="Telefono" class="form-control" id="Telefono" require="">
                         <label for="Descripcion">Descripcion:</label>
                         <input type="text" name="Descripcion" class="form-control" id="Descripcion" require="">
                         <input type="hidden" name="eventDate" class="form-control" id="eventDate">
