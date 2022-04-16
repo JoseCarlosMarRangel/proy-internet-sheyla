@@ -1,6 +1,6 @@
 <?php
 
-require "conexion.php";
+require "../backend/conexion.php";
 $valido = false;
 if (isset($_POST['aceptar'])) {
     $usuario = $_POST['u'];
@@ -19,6 +19,7 @@ if (isset($_POST['aceptar'])) {
 }
 
 ?>
+
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -49,7 +50,7 @@ if (isset($_POST['aceptar'])) {
 
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js'></script>
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style class="cp-pen-styles">
     @import url(https://fonts.googleapis.com/css?family=Open+Sans);
     </style>
@@ -71,13 +72,9 @@ if (isset($_POST['aceptar'])) {
     </script>
     <script>
     /* 
-
 I built this login form to block the front end of most of my freelance wordpress projects during the development stage. 
-
 This is just the HTML / CSS of it but it uses wordpress's login system. 
-
 Nice and Simple
-
 */
     //# sourceURL=pen.js
     </script>
