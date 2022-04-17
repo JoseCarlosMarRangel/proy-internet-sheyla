@@ -73,9 +73,7 @@ body{
     font-size: 20px;
 }
 
-.label{
-    margin-left: 100px;
-}
+
 .contenedorInferior .departamentos .departamentoImagen{
     margin: auto;
     width: auto;
@@ -83,6 +81,15 @@ body{
     background-color: rgb(0, 0, 0);
     border-radius: 5px 5px 5px 5px;
 }
+
+img{
+    width: 200px;
+    height: 130px;
+    margin-top: -20px;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: none;
+}
+
 
 button{
     background: rgb(252,4,65);
