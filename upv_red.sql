@@ -38,7 +38,7 @@ CREATE TABLE `empleados` (
 
 CREATE TABLE `eventos` (
   `id_evento` int(11) NOT NULL,
-  `nombre_evento` varchar(30) NOT NULL,
+  `title` varchar(30) NOT NULL,
   `fecha` date NOT NULL,
   `Descripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
