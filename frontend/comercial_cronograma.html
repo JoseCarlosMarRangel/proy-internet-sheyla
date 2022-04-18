@@ -1,80 +1,10 @@
-<?php
-require "../backend/conexion.php";
-
-function console_log($output, $with_script_tags = true) {
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
-');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}
-
-
-
-if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
-  {
-    $sql = "INSERT INTO eventos (id_evento,title,fecha,Descripcion)
-        VALUES (DEFAULT,'".$_POST['eventTitle']."', '".$_POST['eventDate']."' , '".$_POST['Descripcion']."')";
-    if (mysqli_query($conexion,$sql)) {
-        //echo "New event added successfully";
-    } else {
-        //echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-  }
-
- if(isset($_POST['borrar'])) {
-    //console_log("CHINGADERA JALA POR FAVOR");
-    $id = $_POST['id'];
-    $query = "DELETE FROM eventos WHERE id_evento = $id";
-    if (mysqli_query($conexion, $query)) {
-        //echo "Borrado exitoso exitoso";
-        $sql = "SELECT id_evento,title, Descripcion,fecha as start FROM eventos";
-        $result = mysqli_query($conexion,$sql); 
-        $myArray = array();
-        if ($result->num_rows > 0) {
-        // output data of each row
-            while($row = $result->fetch_assoc()) {
-                //echo "Descripcion:" . $row["title"];
-                $myArray[] = $row;
-            }
-        } 
-        else 
-        {
-            //echo "0 results";
-        }
-    } else {
-        //echo "Error: " . $query . "br" . mysqli_error($conexion);
-    }
-}
-
-
-  //echo "Connected successfully";
-$sql = "SELECT id_evento,title, Descripcion,fecha as start FROM eventos";
-$result = mysqli_query($conexion,$sql); 
-$myArray = array();
-if ($result->num_rows > 0) {
-// output data of each row
-    while($row = $result->fetch_assoc()) {
-        //echo "Descripcion:" . $row["title"];
-        $myArray[] = $row;
-    }
-} 
-else 
-{
-    //echo "0 results";
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Comercial</title>
+    <title>Comercial - Cronograma</title>
 
      <!-- stylesheets and bootstrap -->
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -114,8 +44,8 @@ else
             right: 'month,basicWeek,basicDay'
           },
           eventRender: function(event, element) { 
-                element.find('.fc-title').append("<br/>" + event.id_evento); 
-                element.find('.fc-title').append("<br/>" + event.Descripcion); 
+                element.find('.fc-title').append("<br/>" + event.Description); 
+                element.find('.fc-title').append("<br/>" + event.Telefono); 
                 console.log(event)
           },
           defaultDate: new Date(),
@@ -126,7 +56,6 @@ else
             $("#successModal").modal("show");
             $("#eventDate").val(date.format());
           },    
-          events: <?php echo json_encode($myArray);?>
         });
       });
     </script>
@@ -137,16 +66,16 @@ else
 <body class="control-sidebar-slide-open sidebar-collapse sidebar-closed">
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Inicio</a>
-        <a href="#">Agenda</a>
-        <a href="#">Inventario</a>
-        <a href="#">Peticiones</a>
+        <h1 style="color: white; font-size: 30px;">Comercial</h1>
+        <a href="../frontend/comercial_index.html">Volver</a>
+        <a href="../frontend/comercial_peticiones.html">Peticiones</a>
+        <a href="../frontend/index.html">Inicio</a>
     </div>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
         <!-- Sidebar Toggle-->
         <button class="openbtn" onclick="openNav()">&#9776;</button>
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="produccion_index.html">Producción</a>
+        <a class="navbar-brand ps-3" href="produccion_index.html">Comercial</a>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
@@ -181,10 +110,12 @@ else
                     <h4 class="modal-title">Modal Header</h4>
                   </div>
                   <div class="modal-body">
-                    <form action="comercial.php" method="post">
+                    <form action="agenda_produccion.php" method="post">
                       <div class="form-group">
                         <label for="eventtitle">Nombre cliente:</label>
                         <input type="eventTitle" name="eventTitle" class="form-control" id="eventTitle" required="">
+                        <label for="Telefono">Telefono:</label>
+                        <input type="number" name="Telefono" class="form-control" id="Telefono" require="">
                         <label for="Descripcion">Descripcion:</label>
                         <input type="text" name="Descripcion" class="form-control" id="Descripcion" require="">
                         <input type="hidden" name="eventDate" class="form-control" id="eventDate">
