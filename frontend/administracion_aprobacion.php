@@ -8,8 +8,7 @@
   <title>Administración - Aprobados</title>
 
   <!-- stylesheets and bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
@@ -17,8 +16,7 @@
   <link rel="stylesheet" href="../css/administración.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/sidebar.css">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 
@@ -48,40 +46,53 @@
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false"><i class="fas fa-user fa-fw"></i>Usuario</a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#!">Cerrar sesión</a></li>
-        </ul>
+        <?php
+
+        session_start();
+        if (!isset($_SESSION['u'])) {
+          echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+      <i class='fas fa-user fa-fw'></i>Usuario</a>";
+          echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>";
+          echo "<a class='dropdown-item' href='./login.php'>Iniciar sesión</a>";
+          echo "</div>";
+        } else {
+          echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+      <i class='fas fa-user fa-fw'></i>" . $_SESSION['u'] . "</a>";
+          echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>";
+          echo "<a class='dropdown-item' href='../backend/cerrar_sesion.php'>Cerrar sesión</a>";
+          echo "</div>";
+        }
+
+        ?>
       </li>
     </ul>
   </nav>
 
 
-<div class="row">
-      <div class="col-md-12 contenedorInferior">
-        <h1>Subir Archivos</h1>
+  <div class="row">
+    <div class="col-md-12 contenedorInferior">
+      <h1>Subir Archivos</h1>
 
-        <form action="" id="form_subir">
-          <div class="form-1-2">
-            <label for="">Archivo a Subir</label>
-            <input type="file" name="archivo" required>
-          </div>
+      <form action="" id="form_subir">
+        <div class="form-1-2">
+          <label for="">Archivo a Subir</label>
+          <input type="file" name="archivo" required>
+        </div>
 
-          <div class="barra">
-            <div class="barra_azul" id="barra_estado">
-              <span></span>
-            </div>
+        <div class="barra">
+          <div class="barra_azul" id="barra_estado">
+            <span></span>
           </div>
-          <div class="acciones">
-            <input type="submit" class="btn" value="Enviar">
-            <input type="button" class="cancel" id="cancelar" value="Cancelar">
-          </div>
-        </form>
-      </div>
-</div>
+        </div>
+        <div class="acciones">
+          <input type="submit" class="btn" value="Enviar">
+          <input type="button" class="cancel" id="cancelar" value="Cancelar">
+        </div>
+      </form>
+    </div>
+  </div>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 
   <div class="container-fluid main p-5">
     <h1 class="titulosAdmin">Pendientes</h1>
@@ -105,7 +116,7 @@
                     <div class="col-md-4">
                       <embed src="../docs/Archivo de prueba.pdf" type="application/pdf" width="220px" height="300px">
                       <a href="../docs/Archivo de Prueba.pdf"><button class="btn button-">Abrir</button></a>
-                      <button class="btn button-" >Subir</button>
+                      <button class="btn button-">Subir</button>
                       <br><br>
                       <button class="btn button-">Aceptar</button>
                       <button class="btn button-">Rechazar</button>
@@ -345,17 +356,10 @@
 
 
   <!-- Scripts for bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="../js/sidebar.js"></script>
 </body>
 

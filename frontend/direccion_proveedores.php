@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Producción - Inventario</title>
+    <title>Dirección - Proveedores</title>
 
      <!-- stylesheets and bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -20,11 +20,9 @@
 <body>
 
     <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <h1 style="color: white; font-size: 30px;">Producción</h1>
-        <a href="../frontend/produccion_index.html">Volver</a>
-        <a href="../frontend/produccion_agenda.html">Agenda</a>
-        <a href="../frontend/produccion_peticiones.html">Peticiones</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <h1 style="color: white; font-size: 30px;">Dirección General</h1>
+        <a href="../frontend/direccion_index.html">Volver</a>
         <a href="../frontend/index.php">Inicio</a>
     </div>
     
@@ -32,7 +30,7 @@
       <!-- Sidebar Toggle-->
       <button class="openbtn" onclick="openNav()">&#9776;</button>
       <!-- Navbar Brand-->
-      <a class="navbar-brand ps-3" href="produccion_index.html">Producción</a>
+      <a class="navbar-brand ps-3" href="produccion_index.html">Dirección General</a>
       <!-- Navbar Search-->
       <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
           <div class="input-group">
@@ -43,10 +41,24 @@
       <!-- Navbar-->
       <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Usuario</a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#!">Cerrar sesión</a></li>
-              </ul>
+            <?php
+
+            session_start();
+            if (!isset($_SESSION['u'])) {
+              echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                  <i class='fas fa-user fa-fw'></i>Usuario</a>";
+              echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>";
+              echo "<a class='dropdown-item' href='./login.php'>Iniciar sesión</a>";
+              echo "</div>";
+            } else {
+              echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                  <i class='fas fa-user fa-fw'></i>" . $_SESSION['u'] . "</a>";
+              echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>";
+              echo "<a class='dropdown-item' href='../backend/cerrar_sesion.php'>Cerrar sesión</a>";
+              echo "</div>";
+            }
+    
+            ?>
           </li>
       </ul>
     </nav>
@@ -58,7 +70,7 @@
                 <!-- /.card-header -->
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Inventario</h3>
+                  <h3 class="card-title">Proveedores</h3>
                 </div>
                 <div class="card-body">
                   <table id="inventario-table" class="table table-bordered table-hover">

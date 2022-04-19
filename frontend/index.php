@@ -1,3 +1,9 @@
+<?php 
+
+require '../backend/abrir_session.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,13 +51,13 @@
                     echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                     <i class='fas fa-user fa-fw'></i>Usuario</a>";
                     echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>";
-                    echo "<a class='dropdown-item' href='./frontend/login.php'>Iniciar sesión</a>";
+                    echo "<a class='dropdown-item' href='./login.php'>Iniciar sesión</a>";
                     echo "</div>";
                 } else {
                     echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                     <i class='fas fa-user fa-fw'></i>" . $_SESSION['u'] . "</a>";
                     echo "<div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>";
-                    echo "<a class='dropdown-item' href='./backend/cerrar_sesion.php'>Cerrar sesión</a>";
+                    echo "<a class='dropdown-item' href='../backend/cerrar_sesion.php'>Cerrar sesión</a>";
                     echo "</div>";
                 }
 
