@@ -1,3 +1,58 @@
+<?php
+require "../backend/conexion.php";
+
+function console_log($output, $with_script_tags = true)
+{
+  $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+    ');';
+  if ($with_script_tags) {
+    $js_code = '<script>' . $js_code . '</script>';
+  }
+  echo $js_code;
+}
+
+
+
+if (isset($_POST["submit"])){
+  $sql = "INSERT INTO proveedores (Id,Nombre_empresa,Producto)
+        VALUES (DEFAULT,'" . $_POST['name'] . "','" . $_POST['product'] . "')";
+  if (mysqli_query($conexion, $sql)) {
+    //echo "New event added successfully";
+  } else {
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+
+
+if (isset($_POST["mod"])){
+  $id = $_POST['id'];
+  $nombre = $_POST['name'];
+  $product = $_POST['product'];
+  $sql = "UPDATE proveedores SET Nombre_empresa =  '$nombre' ,  Producto = '$product'   WHERE Id = $id";
+  if (mysqli_query($conexion, $sql)) {
+    //echo "New event added successfully";
+  } else {
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+
+if (isset($_POST["del"])){
+  $id = $_POST['id'];
+  $sql = "DELETE FROM proveedores WHERE Id = $id";
+  if (mysqli_query($conexion, $sql)) {
+    //echo "New event added successfully";
+  } else {
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,43 +134,29 @@
               <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Stock</th>
-                  <th>Descripcion</th>
+                  <th>Nombre de la Empresa</th>
+                  <th>Producto</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>0</td>
-                  <td>desarmador</td>
-                  <td>100</td>
-                  <td>Desarmador triwing de 0.6mm</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>desarmador</td>
-                  <td>100</td>
-                  <td>Desarmador triwing de 0.6mm</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>desarmador</td>
-                  <td>100</td>
-                  <td>Desarmador triwing de 0.6mm</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>desarmador</td>
-                  <td>100</td>
-                  <td>Desarmador triwing de 0.6mm</td>
-                </tr>
-              </tbody>
+              <?php
+                $sql = "SELECT Id,Nombre_empresa,Producto FROM proveedores";
+                $result = mysqli_query($conexion, $sql);
+                if(mysqli_num_rows($result) > 0){
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<tr>';
+                        echo '<td>'. $row['Id'] .'</td>';
+                        echo '<td>'. $row['Nombre_empresa'] .'</td>';
+                        echo '<td>'. $row['Producto'] .'</td>';
+                        echo '</tr>';
+                    }
+                }
+              ?>
               <tfoot>
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Stock</th>
-                  <th>Descripcion</th>
+                  <th>Nombre de la Empresa</th>
+                  <th>Producto</th>
                 </tr>
               </tfoot>
             </table>
@@ -125,12 +166,109 @@
         <!-- /.card -->
       </div>
       <div class="col d-flex flex-column p-5">
-        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modal-añadir">Añadir</button>
-        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modal-modificar">Modificar</button>
-        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modal-eliminar">Eliminar</button>
+        <button class="btn mb-5 button-" data-toggle="modal" name ="add" data-target="#adModal">Añadir</button>
+        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modModal">Modificar</button>
+        <button class="btn mb-5 button-" data-toggle="modal" data-target="#delModal">Eliminar</button>
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="adModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Añadir provedor</h4>
+          </div>
+          <div class="modal-body">
+              <form action="direccion_proveedores.php" method="post">
+                <div class="form-group">
+                  <label for="eventtitle">Nombre provedor:</label>
+                  <input type="name" name="name" class="form-control" id="product" required="">
+                  <label for="Telefono">Producto:</label>
+                  <input type="product" name="product" class="form-control" id="product" require="">
+                </div>
+                  <button type="submit" value="submit" name="submit" class="btn btn-default">Submit</button>
+              </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+<div class="modal fade" id="modModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modificar provedor</h4>
+          </div>
+          <div class="modal-body">
+              <form action="direccion_proveedores.php" method="post">
+                <div class="form-group">
+                  <label for="eventtitle">ID:</label>
+                  <input type="number" name="id" class="form-control" id="id" required="">
+                  <label for="eventtitle">Nombre provedor:</label>
+                  <input type="name" name="name" class="form-control" id="name" required="">
+                  <label for="Telefono">Producto:</label>
+                  <input type="product" name="product" class="form-control" id="product" require="">
+                </div>
+                  <button type="submit" value="mod" name="mod" class="btn btn-default">Submit</button>
+              </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="delModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Borrar provedor</h4>
+          </div>
+          <div class="modal-body">
+              <form action="direccion_proveedores.php" method="post">
+                <div class="form-group">
+                  <label for="eventtitle">ID:</label>
+                  <input type="number" name="id" class="form-control" id="id" required="">
+                </div>
+                  <button type="submit" value="del" name="del" class="btn btn-default">Submit</button>
+              </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- MODAL DE AÑADIR -->
   <div class="modal fade" id="modal-añadir">
