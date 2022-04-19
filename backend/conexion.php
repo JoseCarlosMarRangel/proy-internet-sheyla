@@ -1,10 +1,10 @@
 <?php
 // * conexion a la base de datos
 
-$bd = 'upv_red';
+$bd = 'upv_red3';
 $servidor = 'localhost';
-$usuario = 'ghost'; //$usuario
-$contrasena = '123'; //$contrasena
+$usuario = 'root'; //$usuario
+$contrasena = ''; //$contrasena
 
 // * Creamos la conexion a la base de datos
 $conexion = mysqli_connect($servidor, $usuario, $contrasena, $bd);
@@ -84,4 +84,40 @@ function borrar_citas($id, $conexion)
     } else {
         echo "Error: " . $query . "br" . mysqli_error($conexion);
     }
+}
+
+function registrar_archivos_bd($nombre, $guardado, $dep, $conexion){
+    $query = "INSERT INTO documento (Nombre, Directorio, ID_departamento, Estado) VALUES ('$nombre', '$guardado', ". $dep . ", 0);"; 
+    $resultado = mysqli_query($conexion, $query);
+    return $resultado;
+}
+
+function actualizarStatus_bd($estado,$conexion, $id_doc){
+    $query = "UPDATE documento SET Estado='$estado' WHERE ID_documento='$id_doc'";
+    $resultado = mysqli_query($conexion, $query);
+    return $resultado;
+}
+
+function getDocumentosLegalesPendientes($conexion){
+    $query = "SELECT * FROM `documento` WHERE Estado = 0 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'legal')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getDocumentosLegalesAprobados($conexion){
+    $query = "SELECT * FROM `documento` WHERE Estado = 1 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'legal')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getDocumentosLegalesRechazados($conexion){
+    $query = "SELECT * FROM `documento` WHERE Estado = 2 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'legal')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getNumSlidesFromDocuments($documentosLength){
+    $division = floor($documentosLength / 3);
+    $resultado = $documentosLength % 3 == 0 ? $division : $division + 1;
+    return $resultado;
 }
