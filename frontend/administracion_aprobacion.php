@@ -20,6 +20,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 </head>
 
@@ -29,7 +30,7 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <h1 style="color: white; font-size: 30px;">Administración</h1>
     <a href="../frontend/administracion_index.html">Volver</a>
-    <a href="../frontend/index.html">Inicio</a>
+    <a href="../frontend/index.php">Inicio</a>
   </div>
 
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
@@ -55,6 +56,33 @@
       </li>
     </ul>
   </nav>
+
+
+<div class="row">
+      <div class="col-md-12 contenedorInferior">
+        <h1>Subir Archivos</h1>
+
+        <form action="" id="form_subir">
+          <div class="form-1-2">
+            <label for="">Archivo a Subir</label>
+            <input type="file" name="archivo" required>
+          </div>
+
+          <div class="barra">
+            <div class="barra_azul" id="barra_estado">
+              <span></span>
+            </div>
+          </div>
+          <div class="acciones">
+            <input type="submit" class="btn" value="Enviar">
+            <input type="button" class="cancel" id="cancelar" value="Cancelar">
+          </div>
+        </form>
+      </div>
+</div>
+
+<script src="js/main.js"></script>
+
   <div class="container-fluid main p-5">
     <h1 class="titulosAdmin">Pendientes</h1>
     <div class="d-flex justify-content-around">
