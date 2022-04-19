@@ -25,11 +25,11 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <h1 style="color: white; font-size: 30px;">Dirección General</h1>
         <a href="../frontend/index.php">Inicio</a>
-        <a href="../frontend/administracion_index.html">Administración</a>
-        <a href="../frontend/comercial_index.html">Comercial</a>
-        <a href="../frontend/legal_index.html">Legal</a>
-        <a href="../frontend/produccion_index.html">Producción</a>
-        <a href="../frontend/rrhh_index.html">Recursos Humanos</a>
+        <a href="../frontend/administracion_index.php">Administración</a>
+        <a href="../frontend/comercial_index.php">Comercial</a>
+        <a href="../frontend/legal_index.php">Legal</a>
+        <a href="../frontend/produccion_index.php">Producción</a>
+        <a href="../frontend/rrhh_index.php">Recursos Humanos</a>
     </div>
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
@@ -85,7 +85,7 @@
                 </div>
                 <h1>Vista de Proveedores</h1>
                 <center>
-                    <form action="../frontend/direccion_proveedores.html">
+                    <form action="../frontend/direccion_proveedores.php">
                         <button class="btn button-" type="submit">Entrar</button>
                     </form>
                 </center>

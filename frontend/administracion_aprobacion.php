@@ -27,7 +27,7 @@
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <h1 style="color: white; font-size: 30px;">Administración</h1>
-    <a href="../frontend/administracion_index.html">Volver</a>
+    <a href="../frontend/administracion_index.php">Volver</a>
     <a href="../frontend/index.php">Inicio</a>
   </div>
 

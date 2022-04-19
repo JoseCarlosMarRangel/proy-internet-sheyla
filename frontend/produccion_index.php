@@ -26,11 +26,11 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <h1 style="color: white; font-size: 30px;">Producción</h1>
         <a href="../frontend/index.php">Inicio</a>
-        <a href="../frontend/administracion_index.html">Administración</a>
-        <a href="../frontend/comercial_index.html">Comercial</a>
-        <a href="../frontend/direccion_index.html">Dirección General</a>
-        <a href="../frontend/legal_index.html">Legal</a>
-        <a href="../frontend/rrhh_index.html">Recursos Humanos</a>
+        <a href="../frontend/administracion_index.php">Administración</a>
+        <a href="../frontend/comercial_index.php">Comercial</a>
+        <a href="../frontend/direccion_index.php">Dirección General</a>
+        <a href="../frontend/legal_index.php">Legal</a>
+        <a href="../frontend/rrhh_index.php">Recursos Humanos</a>
 
 
     </div>
@@ -88,7 +88,7 @@
                 </div>
                 <h1>Agenda</h1>
                 <center>
-                    <form action="../frontend/produccion_agenda.html">
+                    <form action="../frontend/produccion_agenda.php">
                         <button class="btn button-" type="submit">Entrar</button>
                     </form>
                 </center>
@@ -102,7 +102,7 @@
                 </div>
                 <h1>Inventario</h1>
                 <center>
-                    <form action="../frontend/produccion_inventario.html">
+                    <form action="../frontend/produccion_inventario.php">
                         <button class="btn button-" type="submit">Entrar</button>
                     </form>
                 </center>
@@ -116,7 +116,7 @@
                 </div>
                 <h1>Enviar Peticiones</h1>
                 <center>
-                    <form action="../frontend/produccion_peticiones.html">
+                    <form action="../frontend/produccion_peticiones.php">
                         <button class="btn button-" type="submit">Entrar</button>
                     </form>
                 </center>

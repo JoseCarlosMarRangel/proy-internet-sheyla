@@ -24,9 +24,9 @@
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <h1 style="color: white; font-size: 30px;">Producción</h1>
-    <a href="../frontend/produccion_index.html">Volver</a>
-    <a href="../frontend/produccion_agenda.html">Agenda</a>
-    <a href="../frontend/produccion_peticiones.html">Peticiones</a>
+    <a href="../frontend/produccion_index.php">Volver</a>
+    <a href="../frontend/produccion_agenda.php">Agenda</a>
+    <a href="../frontend/produccion_peticiones.php">Peticiones</a>
     <a href="../frontend/index.php">Inicio</a>
   </div>
 
@@ -34,7 +34,7 @@
     <!-- Sidebar Toggle-->
     <button class="openbtn" onclick="openNav()">&#9776;</button>
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="produccion_index.html">Producción</a>
+    <a class="navbar-brand ps-3" href="produccion_index.php">Producción</a>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
       <div class="input-group">

@@ -23,8 +23,8 @@
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <h1 style="color: white; font-size: 30px;">Comercial</h1>
-        <a href="../frontend/comercial_index.html">Volver</a>
-        <a href="../frontend/comercial_cronograma.html">Cronograma</a>
+        <a href="../frontend/comercial_index.php">Volver</a>
+        <a href="../frontend/comercial_cronograma.php">Cronograma</a>
         <a href="../frontend/index.php">Inicio</a>
     </div>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
@@ -97,7 +97,7 @@
     // Add the following code if you want the name of the file appear on select
     $(".custom-file-input").on("change", function() {
         var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        $(this).siblings(".custom-file-label").addClass("selected").php(fileName);
     });
 </script>
 <script src="../js/sidebar.js"></script>

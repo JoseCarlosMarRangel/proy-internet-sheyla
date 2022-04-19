@@ -26,11 +26,11 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <h1 style="color: white; font-size: 30px;">Recursos Humanos</h1>
         <a href="../frontend/index.php">Inicio</a>
-        <a href="../frontend/administracion_index.html">Administración</a>
-        <a href="../frontend/comercial_index.html">Comercial</a>
-        <a href="../frontend/direccion_index.html">Dirección General</a>
-        <a href="../frontend/legal_index.html">Legal</a>
-        <a href="../frontend/produccion_index.html">Producción</a>
+        <a href="../frontend/administracion_index.php">Administración</a>
+        <a href="../frontend/comercial_index.php">Comercial</a>
+        <a href="../frontend/direccion_index.php">Dirección General</a>
+        <a href="../frontend/legal_index.php">Legal</a>
+        <a href="../frontend/produccion_index.php">Producción</a>
     </div>
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
