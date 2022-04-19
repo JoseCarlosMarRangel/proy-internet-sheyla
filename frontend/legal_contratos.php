@@ -93,7 +93,7 @@ $documentosRechazados = getDocumentosLegalesRechazados($conexion);
     <!-- Sidebar Toggle-->
     <button class="openbtn" onclick="openNav()">&#9776;</button>
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="#">Legal</a>
+    <a class="navbar-brand ps-3" href="legal_contratos.php">Legal</a>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
