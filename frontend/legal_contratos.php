@@ -86,8 +86,8 @@ $documentosRechazados = getDocumentosLegalesRechazados($conexion);
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <h1 style="color: white; font-size: 30px;">Legal</h1>
-    <a href="../frontend/legal_index.php">Volver</a>
     <a href="../frontend/index.php">Inicio</a>
+    <a href="../frontend/legal_index.php">Volver</a>
   </div>
 
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
@@ -130,7 +130,7 @@ $documentosRechazados = getDocumentosLegalesRechazados($conexion);
   <div class="row">
     <div class="col-md-12 contenedorInferior">
       <form action="legal_contratos.php" method="POST" enctype="multipart/form-data">
-        <h1 class="titulosAdmin">Subir archivos</h1>
+        <h1 class="titulosAdmin">Subir peticiones de legal</h1>
         <center>
           <h1> </h1>
           <div class="">
@@ -256,8 +256,8 @@ $documentosRechazados = getDocumentosLegalesRechazados($conexion);
                   for ($slide2 = 0; $slide2 < getNumSlidesFromDocuments(mysqli_num_rows($documentosAceptados)); $slide2++) {
                   ?>
                     <li data-target="#Carouse2" data-slide-to="<?php echo $slide2;  ?>" <?php if ($slide2 == 0) {
-                                                                                          echo "class='active'";
-                                                                                        } ?>></li>
+                      echo "class='active'";
+                      } ?>></li>
                   <?php } ?>
                 </ol>
                 <br><br>

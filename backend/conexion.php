@@ -3,8 +3,8 @@
 
 $bd = 'upv_red';
 $servidor = 'localhost';
-$usuario = 'ghost'; //$usuario
-$contrasena = '123'; //$contrasena
+$usuario = 'root'; //$usuario
+$contrasena = ''; //$contrasena
 
 // * Creamos la conexion a la base de datos
 $conexion = mysqli_connect($servidor, $usuario, $contrasena, $bd);
@@ -93,7 +93,49 @@ function registrar_archivos_bd($nombre, $guardado, $dep, $conexion)
     return $resultado;
 }
 
+function registrar_archivos_bd2($nombre, $guardado, $dep, $conexion)
+{
+    $query = "INSERT INTO documento (Nombre, Directorio, ID_departamento, Estado) VALUES ('$nombre', '$guardado', " . $dep . ", 0);";
+    $resultado = mysqli_query($conexion, $query);
+    return $resultado;
+}
+
+function registrar_archivos_bd3($nombre, $guardado, $dep, $conexion)
+{
+    $query = "INSERT INTO documento (Nombre, Directorio, ID_departamento, Estado) VALUES ('$nombre', '$guardado', " . $dep . ", 0);";
+    $resultado = mysqli_query($conexion, $query);
+    return $resultado;
+}
+
+function registrar_archivos_bd4($nombre, $guardado, $dep, $conexion)
+{
+    $query = "INSERT INTO documento (Nombre, Directorio, ID_departamento, Estado) VALUES ('$nombre', '$guardado', " . $dep . ", 0);";
+    $resultado = mysqli_query($conexion, $query);
+    return $resultado;
+}
+
 function actualizarStatus_bd($estado, $conexion, $id_doc)
+{
+    $query = "UPDATE documento SET Estado='$estado' WHERE ID_documento='$id_doc'";
+    $resultado = mysqli_query($conexion, $query);
+    return $resultado;
+}
+
+function actualizarStatus_bd2($estado, $conexion, $id_doc)
+{
+    $query = "UPDATE documento SET Estado='$estado' WHERE ID_documento='$id_doc'";
+    $resultado = mysqli_query($conexion, $query);
+    return $resultado;
+}
+
+function actualizarStatus_bd3($estado, $conexion, $id_doc)
+{
+    $query = "UPDATE documento SET Estado='$estado' WHERE ID_documento='$id_doc'";
+    $resultado = mysqli_query($conexion, $query);
+    return $resultado;
+}
+
+function actualizarStatus_bd4($estado, $conexion, $id_doc)
 {
     $query = "UPDATE documento SET Estado='$estado' WHERE ID_documento='$id_doc'";
     $resultado = mysqli_query($conexion, $query);
@@ -107,9 +149,51 @@ function getDocumentosLegalesPendientes($conexion)
     return $resultado;
 }
 
+function getDocumentosLegalesPendientes2($conexion)
+{
+    $query = "SELECT * FROM `documento` WHERE Estado = 0 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'Administracion')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getDocumentosLegalesPendientes3($conexion)
+{
+    $query = "SELECT * FROM `documento` WHERE Estado = 0 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'Comercial')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getDocumentosLegalesPendientes4($conexion)
+{
+    $query = "SELECT * FROM `documento` WHERE Estado = 0 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'Produccion')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
 function getDocumentosLegalesAprobados($conexion)
 {
     $query = "SELECT * FROM `documento` WHERE Estado = 1 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'legal')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getDocumentosLegalesAprobados2($conexion)
+{
+    $query = "SELECT * FROM `documento` WHERE Estado = 1 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'Administracion')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getDocumentosLegalesAprobados3($conexion)
+{
+    $query = "SELECT * FROM `documento` WHERE Estado = 1 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'Comercial')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getDocumentosLegalesAprobados4($conexion)
+{
+    $query = "SELECT * FROM `documento` WHERE Estado = 1 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'Produccion')";
     $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
     return $resultado;
 }
@@ -121,7 +205,51 @@ function getDocumentosLegalesRechazados($conexion)
     return $resultado;
 }
 
+function getDocumentosLegalesRechazados2($conexion)
+{
+    $query = "SELECT * FROM `documento` WHERE Estado = 2 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'Administracion')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getDocumentosLegalesRechazados3($conexion)
+{
+    $query = "SELECT * FROM `documento` WHERE Estado = 2 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'Comercial')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+function getDocumentosLegalesRechazados4($conexion)
+{
+    $query = "SELECT * FROM `documento` WHERE Estado = 2 and ID_departamento = (select ID_departamento FROM departamentos where Nombre_departamento = 'Produccion')";
+    $resultado = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
+    return $resultado;
+}
+
+
+
 function getNumSlidesFromDocuments($documentosLength)
+{
+    $division = floor($documentosLength / 3);
+    $resultado = $documentosLength % 3 == 0 ? $division : $division + 1;
+    return $resultado;
+}
+
+function getNumSlidesFromDocuments2($documentosLength)
+{
+    $division = floor($documentosLength / 3);
+    $resultado = $documentosLength % 3 == 0 ? $division : $division + 1;
+    return $resultado;
+}
+
+function getNumSlidesFromDocuments3($documentosLength)
+{
+    $division = floor($documentosLength / 3);
+    $resultado = $documentosLength % 3 == 0 ? $division : $division + 1;
+    return $resultado;
+}
+
+function getNumSlidesFromDocuments4($documentosLength)
 {
     $division = floor($documentosLength / 3);
     $resultado = $documentosLength % 3 == 0 ? $division : $division + 1;

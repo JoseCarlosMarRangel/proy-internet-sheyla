@@ -1,3 +1,59 @@
+<?php
+require "../backend/conexion.php";
+
+function console_log($output, $with_script_tags = true)
+{
+  $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+    ');';
+  if ($with_script_tags) {
+    $js_code = '<script>' . $js_code . '</script>';
+  }
+  echo $js_code;
+}
+
+
+
+if (isset($_POST["submit"])){
+  $sql = "INSERT INTO inventario (ID_inventario,Nombre,Stock,Descripcion)
+        VALUES (DEFAULT,'" . $_POST['nombre'] . "','" . $_POST['stock'] .  "','" . $_POST['descripcion'] . "')";
+  if (mysqli_query($conexion, $sql)) {
+    //echo "New event added successfully";
+  } else {
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+
+
+if (isset($_POST["mod"])){
+  $id = $_POST['id'];
+  $nombre = $_POST['nombre'];
+  $stock = $_POST['stock'];
+  $desc = $_POST['descripcion'];
+  $sql = "UPDATE inventario SET Nombre =  '$nombre' ,  Stock = '$stock' , Descripcion = '$desc'   WHERE ID_inventario = $id";
+  if (mysqli_query($conexion, $sql)) {
+    //echo "New event added successfully";
+  } else {
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+
+if (isset($_POST["del"])){
+  $id = $_POST['id'];
+  $sql = "DELETE FROM inventario WHERE ID_inventario = $id";
+  if (mysqli_query($conexion, $sql)) {
+    //echo "New event added successfully";
+  } else {
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +61,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Producción - Inventario</title>
+  <title>Dirección - Proveedores</title>
 
   <!-- stylesheets and bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -23,18 +79,17 @@
 
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <h1 style="color: white; font-size: 30px;">Producción</h1>
-    <a href="../frontend/produccion_index.php">Volver</a>
-    <a href="../frontend/produccion_agenda.php">Agenda</a>
-    <a href="../frontend/produccion_peticiones.php">Peticiones</a>
+    <h1 style="color: white; font-size: 30px;">Produccion</h1>
     <a href="../frontend/index.php">Inicio</a>
+    <a href="../frontend/produccion_index.php">Volver</a>
+    
   </div>
 
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
     <!-- Sidebar Toggle-->
     <button class="openbtn" onclick="openNav()">&#9776;</button>
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="produccion_index.php">Producción</a>
+    <a class="navbar-brand ps-3" href="../frontend/produccion_index.php">Produccion</a>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
       <div class="input-group">
@@ -81,37 +136,26 @@
               <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
+                  <th>Nombre del producto</th>
                   <th>Stock</th>
                   <th>Descripcion</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>0</td>
-                  <td>desarmador</td>
-                  <td>100</td>
-                  <td>Desarmador triwing de 0.6mm</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>desarmador</td>
-                  <td>100</td>
-                  <td>Desarmador triwing de 0.6mm</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>desarmador</td>
-                  <td>100</td>
-                  <td>Desarmador triwing de 0.6mm</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>desarmador</td>
-                  <td>100</td>
-                  <td>Desarmador triwing de 0.6mm</td>
-                </tr>
-              </tbody>
+              <?php
+                $sql = "SELECT ID_inventario,Nombre,Stock,Descripcion FROM inventario";
+                $result = mysqli_query($conexion, $sql);
+                if(mysqli_num_rows($result) > 0){
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<tr>';
+                        echo '<td>'. $row['ID_inventario'] .'</td>';
+                        echo '<td>'. $row['Nombre'] .'</td>';
+                        echo '<td>'. $row['Stock'] .'</td>';
+                        echo '<td>'. $row['Descripcion'] .'</td>';
+                        echo '</tr>';
+                    }
+                }
+              ?>
               <tfoot>
                 <tr>
                   <th>Id</th>
@@ -127,12 +171,113 @@
         <!-- /.card -->
       </div>
       <div class="col d-flex flex-column p-5">
-        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modal-añadir">Añadir</button>
-        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modal-modificar">Modificar</button>
-        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modal-eliminar">Eliminar</button>
+        <button class="btn mb-5 button-" data-toggle="modal" name ="add" data-target="#adModal">Añadir</button>
+        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modModal">Modificar</button>
+        <button class="btn mb-5 button-" data-toggle="modal" data-target="#delModal">Eliminar</button>
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="adModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Añadir registro</h4>
+          </div>
+          <div class="modal-body">
+              <form action="produccion_inventario.php" method="post">
+                <div class="form-group">
+                  <label for="eventtitle">Nombre del producto:</label>
+                  <input type="name" name="nombre" class="form-control" id="nombre" required="">
+                  <label for="Telefono">Cantidad de stock:</label>
+                  <input type="name" name="stock" class="form-control" id="stock" require="">
+                  <label for="Telefono">Descripcion del producto:</label>
+                  <input type="name" name="descripcion" class="form-control" id="descripcion" require="">
+                </div>
+                  <button type="submit" value="submit" name="submit" class="btn btn-default">Submit</button>
+              </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+<div class="modal fade" id="modModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modificar registro</h4>
+          </div>
+          <div class="modal-body">
+              <form action="produccion_inventario.php" method="post">
+                <div class="form-group">
+                  <label for="eventtitle">ID:</label>
+                  <input type="number" name="id" class="form-control" id="id" required="">
+                  <label for="eventtitle">Nombre producto:</label>
+                  <input type="name" name="nombre" class="form-control" id="name" required="">
+                  <label for="Telefono">Cantidad de Stock:</label>
+                  <input type="number" name="product" class="form-control" id="product" require="">
+                  <label for="Telefono">Descripcion del producto:</label>
+                  <input type="product" name="descripcion" class="form-control" id="descripcion" require="">
+                </div>
+                  <button type="submit" value="mod" name="mod" class="btn btn-default">Submit</button>
+              </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="delModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Borrar registro</h4>
+          </div>
+          <div class="modal-body">
+              <form action="produccion_inventario.php" method="post">
+                <div class="form-group">
+                  <label for="eventtitle">ID:</label>
+                  <input type="number" name="id" class="form-control" id="id" required="">
+                </div>
+                  <button type="submit" value="del" name="del" class="btn btn-default">Submit</button>
+              </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- MODAL DE AÑADIR -->
   <div class="modal fade" id="modal-añadir">

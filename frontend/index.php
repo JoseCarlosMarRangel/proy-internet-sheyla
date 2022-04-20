@@ -46,7 +46,6 @@ require '../backend/abrir_session.php';
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <?php
-
                 session_start();
                 if (!isset($_SESSION['u'])) {
                     echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -141,10 +140,10 @@ require '../backend/abrir_session.php';
                                                 <center>
                                                     <a href="../frontend/legal_index.php"><button class="btn button-">Entrar</button></a>
                                                 </center>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="departamentos">
+                                            <div class="col-md-4">
+                                              <div class="departamentos">
                                                 <div class="departamentoImagen">
                                                     <img src="../img/Production-Section-img.jpg.jpg" alt="" width="100%" height="100%">
                                                 </div>

@@ -136,9 +136,9 @@ if ($result->num_rows > 0) {
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <h1 style="color: white; font-size: 30px;">Comercial</h1>
-    <a href="../frontend/comercial_index.php">Volver</a>
-    <a href="../frontend/comercial_peticiones.php">Peticiones</a>
     <a href="../frontend/index.php">Inicio</a>
+    <a href="../frontend/comercial_peticiones.php">Peticiones</a>
+    <a href="../frontend/comercial_index.php">Volver</a>
   </div>
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
     <!-- Sidebar Toggle-->

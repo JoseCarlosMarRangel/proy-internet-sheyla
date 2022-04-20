@@ -135,10 +135,11 @@ if ($result->num_rows > 0) {
 <body class="control-sidebar-slide-open sidebar-collapse sidebar-closed">
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="#">Inicio</a>
-    <a href="#">Agenda</a>
-    <a href="#">Inventario</a>
-    <a href="#">Peticiones</a>
+    <h1 style="color: white; font-size: 30px;">Producción agenda</h1>
+    <a href="../frontend/index.php">Inicio</a>
+    <a href="produccion_inventario.php">Inventario</a>
+    <a href="produccion_peticiones.php">Peticiones</a>
+    <a href="../frontend/produccion_index.php">Volver</a>
   </div>
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
     <!-- Sidebar Toggle-->

@@ -1,3 +1,61 @@
+<?php
+
+include '../backend/conexion.php';
+
+function console_log($output, $with_script_tags = true)
+{
+  $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+    ');';
+  if ($with_script_tags) {
+    $js_code = '<script>' . $js_code . '</script>';
+  }
+  echo $js_code;
+}
+
+if (isset($_POST["submit"])) {
+  $id_empleado = $_POST["id_empleado"];
+  $nombre = $_POST["nombre"];
+  $apellido = $_POST["apellido"];
+  $correo = $_POST["correo"];
+  $usuario = $_POST["usuario"];
+  $id_departamento = $_POST["departamento"];
+  $contrasena = $_POST["password"];
+  $query = "INSERT INTO empleados (ID_empleado,ID_departamento,Nombre_empleado,Apellido_empleado,Correo,Usuario,pass) VALUES ($id_empleado,$id_departamento,'$nombre','$apellido','$correo','$usuario',$contrasena)";
+  if (mysqli_query($conexion, $query)) {
+    #echo "Registro exitoso";
+  } else {
+    echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+  }
+}
+
+if (isset($_POST['submit2'])) {
+  $id_empleado = $_POST["id_empleado"];
+  $nombre = $_POST["nombre"];
+  $apellido = $_POST["apellido"];
+  $correo = $_POST["correo"];
+  $usuario = $_POST["usuario"];
+  $id_departamento = $_POST["departamento"];
+  $contrasena = $_POST["password"];
+  $query = "UPDATE empleados SET Nombre_empleado = '$nombre', Apellido_empleado = '$apellido', Correo = '$correo', Usuario = '$usuario', pass = '$contrasena', ID_departamento = '$id_departamento' WHERE ID_empleado = '$id_empleado'";
+  if (mysqli_query($conexion, $query)) {
+    #echo "Modificacion exitosa";
+  } else {
+    echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+  }
+}
+
+if (isset($_POST['submit3'])) {
+  $id_empleado = $_POST["id_empleado"];
+  $query = "DELETE FROM empleados WHERE ID_empleado = '$id_empleado'";
+  if (mysqli_query($conexion, $query)) {
+    #echo "Eliminacion exitosa";
+  } else {
+    echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,8 +81,9 @@
 
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="../frontend/rrhh_index.php">Volver</a>
     <a href="../frontend/index.php">Inicio</a>
+    <a href="../frontend/rrhh_index.php">Volver</a>
+
   </div>
 
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark mb-0">
@@ -84,7 +143,6 @@
                   <td>Id_Departamento</td>
                 </tr>
                 <?php
-                include '../backend/conexion.php';
                 $sql = "select ID_empleado, Nombre_empleado, Apellido_empleado,
                 Correo, Usuario, ID_departamento from empleados";
                 $result = mysqli_query($conexion, $sql);
@@ -107,88 +165,98 @@
           </div>
           <!-- /.card -->
         </div>
-        <div class="col d-flex flex-column p-5">
-
-          <button class="btn mb-5 button-" data-toggle="modal" data-target="#modal-modificar" onclick="location.reload()">Refrescar</button>
-
-        </div>
       </div>
-      <br>
-      <h1>Añadir</h1>
-      <?php
-
-      if (isset($_POST['anadir'])) {
-        $id_empleado = $_POST['id_empleado'];
-        $nombre_empleado = $_POST['nombre'];
-        $apellido_empleado = $_POST['apellido'];
-        $correo = $_POST['correo'];
-        $usuario = $_POST['usuario'];
-        $id_departamento = $_POST['id_departamento'];
-        $password = $_POST['password'];
-
-        if (anadirempleados($id_empleado, $nombre_empleado, $apellido_empleado, $correo, $usuario, $id_departamento, $password, $conexion)) {
-          header("Location: URL");
-        }
-      }
-
-      if (isset($_POST['modif'])) {
-        $id_empleado = $_POST['id_empleado'];
-        $nombre_empleado = $_POST['nombre'];
-        $apellido_empleado = $_POST['apellido'];
-        $correo = $_POST['correo'];
-        $usuario = $_POST['usuario'];
-        $id_departamento = $_POST['id_departamento'];
-        $password = $_POST['password'];
-
-        if (modificarempleados($id_empleado, $nombre_empleado, $apellido_empleado, $correo, $usuario, $id_departamento, $password, $conexion)) {
-          header("Location: URL");
-        }
-      }
-
-      if (isset($_POST['eliminar'])) {
-        $id_empleado = $_POST['id_empleado'];
-
-        if (eliminarempleados($id_empleado, $conexion)) {
-          header("Location: URL");
-        }
-      }
-
-
-      ?>
-
-      <form method="post">
-        <input type="number" name="id_empleado" placeholder="ID Empleado" required>
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="text" name="apellido" placeholder="Apellido" required>
-        <input type="text" name="correo" placeholder="Correo" required>
-        <input type="text" name="usuario" placeholder="Usuario" required>
-        <input type="number" name="id_departamento" placeholder="ID Departamento" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button name="anadir" type="submit">Registrar</button>
-      </form>
-
-      <h1>Modificar empleados</h1>
-      <form method="post">
-        <input type="number" name="id_empleado" placeholder="ID Empleado" required>
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="text" name="apellido" placeholder="Apellido" required>
-        <input type="text" name="correo" placeholder="Correo" required>
-        <input type="text" name="usuario" placeholder="Usuario" required>
-        <input type="number" name="id_departamento" placeholder="ID Departamento" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button name="modif" type="submit">Modificar</button>
-      </form>
-
-      <h1>Eliminar empleados</h1>
-      <form method="post">
-        <input type="number" name="id_empleado" placeholder="ID Empleado" required>
-        <button name="eliminar" type="submit">Eliminar</button>
-      </form>
-
+      <div class="col d-flex flex-column p-5">
+        <button class="btn mb-5 button-" data-toggle="modal" name="add" data-target="#adModal">Añadir</button>
+        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modModal">Modificar</button>
+        <button class="btn mb-5 button-" data-toggle="modal" data-target="#delModal">Eliminar</button>
+      </div>
     </div>
   </div>
 
+  <div class="modal fade" id="adModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Añadir Empleado</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post">
+            <div class="form-group">
+              <label for="select-id_empleado">ID_empleado</label>
+              <input type="number" id="id_empleado" name="id_empleado" class="form-control" maxlenght="9999999999" minlength="0" placeholder="ID_empleado" required="">
+              <label for="select-nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required="">
+              <label for="select-apellido">Apellido</label>
+              <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" required="">
+              <label for="select-correo">Correo</label>
+              <input type="text" id="correo" name="correo" class="form-control" placeholder="Correo" required="">
+              <label for="select-usuario">Usuario</label>
+              <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required="">
+              <label for="select-departamento">Departamento</label>
+              <input type="number" id="departamento" name="departamento" class="form-control" placeholder="Departamento" required="">
+              <label for="password">Contraseña</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required="">
+            </div>
+            <button type="submit" value="submit" name="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="modal fade" id="delModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Eliminar Empleado</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post">
+            <div class="form-group">
+              <label for="select-id_empleado">ID_empleado</label>
+              <input type="number" id="id_empleado" name="id_empleado" class="form-control" maxlenght="9999999999" minlength="0" placeholder="ID_empleado" required="">
+            </div>
+            <button type="submit" value="submit2" name="submit3" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Editar Empleado</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post">
+            <div class="form-group">
+              <label for="select-id_empleado">ID_empleado</label>
+              <input type="number" id="id_empleado" name="id_empleado" class="form-control" maxlenght="9999999999" minlength="0" placeholder="ID_empleado" required="">
+              <label for="select-nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required="">
+              <label for="select-apellido">Apellido</label>
+              <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" required="">
+              <label for="select-correo">Correo</label>
+              <input type="text" id="correo" name="correo" class="form-control" placeholder="Correo" required="">
+              <label for="select-usuario">Usuario</label>
+              <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required="">
+              <label for="select-departamento">Departamento</label>
+              <input type="number" id="departamento" name="departamento" class="form-control" placeholder="Departamento" required="">
+              <label for="password">Contraseña</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required="">
+            </div>
+            <button type="submit" value="submit2" name="submit2" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts for bootstrap -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
