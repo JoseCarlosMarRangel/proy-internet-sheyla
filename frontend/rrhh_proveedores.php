@@ -28,6 +28,32 @@ if (isset($_POST["submit"])) {
   }
 }
 
+if (isset($_POST['submit2'])) {
+  $id_empleado = $_POST["id_empleado"];
+  $nombre = $_POST["nombre"];
+  $apellido = $_POST["apellido"];
+  $correo = $_POST["correo"];
+  $usuario = $_POST["usuario"];
+  $id_departamento = $_POST["departamento"];
+  $contrasena = $_POST["password"];
+  $query = "UPDATE empleados SET Nombre_empleado = '$nombre', Apellido_empleado = '$apellido', Correo = '$correo', Usuario = '$usuario', pass = '$contrasena', ID_departamento = '$id_departamento' WHERE ID_empleado = '$id_empleado'";
+  if (mysqli_query($conexion, $query)) {
+    #echo "Modificacion exitosa";
+  } else {
+    echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+  }
+}
+
+if (isset($_POST['submit3'])) {
+  $id_empleado = $_POST["id_empleado"];
+  $query = "DELETE FROM empleados WHERE ID_empleado = '$id_empleado'";
+  if (mysqli_query($conexion, $query)) {
+    #echo "Eliminacion exitosa";
+  } else {
+    echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -141,8 +167,8 @@ if (isset($_POST["submit"])) {
       </div>
       <div class="col d-flex flex-column p-5">
         <button class="btn mb-5 button-" data-toggle="modal" name="add" data-target="#adModal">Añadir</button>
-        <!--<button class="btn mb-5 button-" data-toggle="modal" data-target="#modal-modificar" onclick="location.reload()">Refrescar</button>-->
-
+        <button class="btn mb-5 button-" data-toggle="modal" data-target="#modModal">Modificar</button>
+        <button class="btn mb-5 button-" data-toggle="modal" data-target="#delModal">Eliminar</button>
       </div>
     </div>
   </div>
@@ -173,6 +199,58 @@ if (isset($_POST["submit"])) {
               <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required="">
             </div>
             <button type="submit" value="submit" name="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="delModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Eliminar Empleado</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post">
+            <div class="form-group">
+              <label for="select-id_empleado">ID_empleado</label>
+              <input type="number" id="id_empleado" name="id_empleado" class="form-control" maxlenght="9999999999" minlength="0" placeholder="ID_empleado" required="">
+            </div>
+            <button type="submit" value="submit2" name="submit3" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modModal" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Editar Empleado</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post">
+            <div class="form-group">
+              <label for="select-id_empleado">ID_empleado</label>
+              <input type="number" id="id_empleado" name="id_empleado" class="form-control" maxlenght="9999999999" minlength="0" placeholder="ID_empleado" required="">
+              <label for="select-nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required="">
+              <label for="select-apellido">Apellido</label>
+              <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" required="">
+              <label for="select-correo">Correo</label>
+              <input type="text" id="correo" name="correo" class="form-control" placeholder="Correo" required="">
+              <label for="select-usuario">Usuario</label>
+              <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required="">
+              <label for="select-departamento">Departamento</label>
+              <input type="number" id="departamento" name="departamento" class="form-control" placeholder="Departamento" required="">
+              <label for="password">Contraseña</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required="">
+            </div>
+            <button type="submit" value="submit2" name="submit2" class="btn btn-default">Submit</button>
           </form>
         </div>
       </div>
