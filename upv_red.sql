@@ -32,8 +32,7 @@ CREATE TABLE `empleados` (
   `Apellido_empleado` varchar(30) NOT NULL,
   `Correo` varchar(40) NOT NULL,
   `Usuario` varchar(30) NOT NULL,
-  `pass` varchar(32) NOT NULL,
-  `rol` int(11) NOT NULL DEFAULT 0
+  `pass` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `eventos` (
@@ -98,13 +97,13 @@ INSERT INTO `departamentos` (`ID_departamento`, `Nombre_departamento`) VALUES
 (6, 'Legal'),
 (7, 'Produccion');
 
-INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `pass`, `rol`) VALUES
-(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', 'dg1', 0),
-(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'dg2', 0),
-(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'd1', 0),
-(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'd2', 0),
-(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'c1', 0),
-(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c2', 0);
+INSERT INTO `empleados` (`ID_empleado`, `ID_departamento`, `Nombre_empleado`, `Apellido_empleado`, `Correo`, `Usuario`, `pass`) VALUES
+(1, 1, 'Alfonso Aldahir ', 'Hernandez Rodriguez', 'AAHernandezR@upred.com', 'DGAlfonso', 'dg1'),
+(2, 1, 'Adriana', 'Palmero Torres', 'APalemeroT@upred.com', 'DGPalemero', 'dg2'),
+(3, 2, 'Gustavo Angel', 'Vargas Pesina', 'GAVargasP@upred.com', 'DGustavo', 'd1'),
+(4, 2, 'Marco Alejandro', 'Hernández Castellanos', 'MAHernandezC@upred.com', 'DMarco', 'd2'),
+(9, 5, 'José Carlos', 'Mar Rangel', 'JCMarR@upred.com', 'CJose', 'c1'),
+(10, 5, 'Cristal Elizabeth', 'Toscano Hernández', 'CEToscanoH@upred.com', 'CCristal', 'c2');
 
 INSERT INTO `citas` (`Id_cita`, `title`, `Telefono`, `Description`, `Fechas`) VALUES
 (1, 'carl', 8342666114, 'soy carlos', '2022-04-13');
