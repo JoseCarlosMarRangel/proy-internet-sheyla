@@ -94,7 +94,7 @@ $documentosRechazados = getDocumentosLegalesRechazados2($conexion);
     <!-- Sidebar Toggle-->
     <button class="openbtn" onclick="openNav()">&#9776;</button>
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="administracion_index.phh">Administracion - Aprobación</a>
+    <a class="navbar-brand ps-3" href="administracion_index.php">Administracion - Aprobación</a>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
       <div class="input-group">
@@ -256,8 +256,8 @@ $documentosRechazados = getDocumentosLegalesRechazados2($conexion);
                   for ($slide2 = 0; $slide2 < getNumSlidesFromDocuments2(mysqli_num_rows($documentosAceptados)); $slide2++) {
                   ?>
                     <li data-target="#Carouse2" data-slide-to="<?php echo $slide2;  ?>" <?php if ($slide2 == 0) {
-                      echo "class='active'";
-                      } ?>></li>
+                                                                                          echo "class='active'";
+                                                                                        } ?>></li>
                   <?php } ?>
                 </ol>
                 <br><br>

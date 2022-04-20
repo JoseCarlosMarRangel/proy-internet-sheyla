@@ -3,8 +3,8 @@
 
 $bd = 'upv_red';
 $servidor = 'localhost';
-$usuario = 'root'; //$usuario
-$contrasena = ''; //$contrasena
+$usuario = 'ghost'; //$usuario
+$contrasena = '123'; //$contrasena
 
 // * Creamos la conexion a la base de datos
 $conexion = mysqli_connect($servidor, $usuario, $contrasena, $bd);
